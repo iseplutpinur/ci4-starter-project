@@ -1,0 +1,118 @@
+CRITICAL - 2021-08-26 07:52:24 --> toolbar filter must have a matching alias defined.
+#0 D:\coding\ci4\vendor\codeigniter4\framework\system\Filters\Filters.php(546): CodeIgniter\Filters\Exceptions\FilterException::forNoAlias('toolbar')
+#1 D:\coding\ci4\vendor\codeigniter4\framework\system\Filters\Filters.php(265): CodeIgniter\Filters\Filters->processAliasesToClass('after')
+#2 D:\coding\ci4\vendor\codeigniter4\framework\system\Filters\Filters.php(168): CodeIgniter\Filters\Filters->initialize('/')
+#3 D:\coding\ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(407): CodeIgniter\Filters\Filters->run('/', 'before')
+#4 D:\coding\ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(336): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 D:\coding\ci4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 D:\coding\ci4\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('D:\\coding\\ci4\\p...')
+#7 {main}
+CRITICAL - 2021-08-26 07:52:35 --> toolbar filter must have a matching alias defined.
+#0 D:\coding\ci4\vendor\codeigniter4\framework\system\Filters\Filters.php(546): CodeIgniter\Filters\Exceptions\FilterException::forNoAlias('toolbar')
+#1 D:\coding\ci4\vendor\codeigniter4\framework\system\Filters\Filters.php(265): CodeIgniter\Filters\Filters->processAliasesToClass('after')
+#2 D:\coding\ci4\vendor\codeigniter4\framework\system\Filters\Filters.php(168): CodeIgniter\Filters\Filters->initialize('admin')
+#3 D:\coding\ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(407): CodeIgniter\Filters\Filters->run('admin', 'before')
+#4 D:\coding\ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(336): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 D:\coding\ci4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 D:\coding\ci4\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('D:\\coding\\ci4\\p...')
+#7 {main}
+CRITICAL - 2021-08-26 07:53:02 --> toolbar filter must have a matching alias defined.
+#0 D:\coding\ci4\vendor\codeigniter4\framework\system\Filters\Filters.php(546): CodeIgniter\Filters\Exceptions\FilterException::forNoAlias('toolbar')
+#1 D:\coding\ci4\vendor\codeigniter4\framework\system\Filters\Filters.php(265): CodeIgniter\Filters\Filters->processAliasesToClass('after')
+#2 D:\coding\ci4\vendor\codeigniter4\framework\system\Filters\Filters.php(168): CodeIgniter\Filters\Filters->initialize('admin')
+#3 D:\coding\ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(407): CodeIgniter\Filters\Filters->run('admin', 'before')
+#4 D:\coding\ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(336): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 D:\coding\ci4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 D:\coding\ci4\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('D:\\coding\\ci4\\p...')
+#7 {main}
+CRITICAL - 2021-08-26 07:53:23 --> permission filter must have a matching alias defined.
+#0 D:\coding\ci4\vendor\codeigniter4\framework\system\Filters\Filters.php(373): CodeIgniter\Filters\Exceptions\FilterException::forNoAlias('permission')
+#1 D:\coding\ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\Filters\Filters->enableFilter('permission', 'before')
+#2 D:\coding\ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(336): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\coding\ci4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 D:\coding\ci4\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('D:\\coding\\ci4\\p...')
+#5 {main}
+CRITICAL - 2021-08-26 07:53:37 --> permission filter must have a matching alias defined.
+#0 D:\coding\ci4\vendor\codeigniter4\framework\system\Filters\Filters.php(373): CodeIgniter\Filters\Exceptions\FilterException::forNoAlias('permission')
+#1 D:\coding\ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\Filters\Filters->enableFilter('permission', 'before')
+#2 D:\coding\ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(336): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\coding\ci4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 D:\coding\ci4\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('D:\\coding\\ci4\\p...')
+#5 {main}
+CRITICAL - 2021-08-26 07:53:45 --> permission filter must have a matching alias defined.
+#0 D:\coding\ci4\vendor\codeigniter4\framework\system\Filters\Filters.php(373): CodeIgniter\Filters\Exceptions\FilterException::forNoAlias('permission')
+#1 D:\coding\ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\Filters\Filters->enableFilter('permission', 'before')
+#2 D:\coding\ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(336): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\coding\ci4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 D:\coding\ci4\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('D:\\coding\\ci4\\p...')
+#5 {main}
+CRITICAL - 2021-08-26 07:54:00 --> permission filter must have a matching alias defined.
+#0 D:\coding\ci4\vendor\codeigniter4\framework\system\Filters\Filters.php(373): CodeIgniter\Filters\Exceptions\FilterException::forNoAlias('permission')
+#1 D:\coding\ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\Filters\Filters->enableFilter('permission', 'before')
+#2 D:\coding\ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(336): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\coding\ci4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 D:\coding\ci4\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('D:\\coding\\ci4\\p...')
+#5 {main}
+CRITICAL - 2021-08-26 07:54:26 --> toolbar filter must have a matching alias defined.
+#0 D:\coding\ci4\vendor\codeigniter4\framework\system\Filters\Filters.php(546): CodeIgniter\Filters\Exceptions\FilterException::forNoAlias('toolbar')
+#1 D:\coding\ci4\vendor\codeigniter4\framework\system\Filters\Filters.php(265): CodeIgniter\Filters\Filters->processAliasesToClass('after')
+#2 D:\coding\ci4\vendor\codeigniter4\framework\system\Filters\Filters.php(168): CodeIgniter\Filters\Filters->initialize('admin')
+#3 D:\coding\ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(407): CodeIgniter\Filters\Filters->run('admin', 'before')
+#4 D:\coding\ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(336): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 D:\coding\ci4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 D:\coding\ci4\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('D:\\coding\\ci4\\p...')
+#7 {main}
+CRITICAL - 2021-08-26 08:12:14 --> toolbar filter must have a matching alias defined.
+#0 D:\coding\ci4\vendor\codeigniter4\framework\system\Filters\Filters.php(546): CodeIgniter\Filters\Exceptions\FilterException::forNoAlias('toolbar')
+#1 D:\coding\ci4\vendor\codeigniter4\framework\system\Filters\Filters.php(265): CodeIgniter\Filters\Filters->processAliasesToClass('after')
+#2 D:\coding\ci4\vendor\codeigniter4\framework\system\Filters\Filters.php(168): CodeIgniter\Filters\Filters->initialize('/')
+#3 D:\coding\ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(407): CodeIgniter\Filters\Filters->run('/', 'before')
+#4 D:\coding\ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(336): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 D:\coding\ci4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 D:\coding\ci4\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('D:\\coding\\ci4\\p...')
+#7 {main}
+CRITICAL - 2021-08-26 14:49:35 --> toolbar filter must have a matching alias defined.
+#0 D:\coding\ci4\vendor\codeigniter4\framework\system\Filters\Filters.php(546): CodeIgniter\Filters\Exceptions\FilterException::forNoAlias('toolbar')
+#1 D:\coding\ci4\vendor\codeigniter4\framework\system\Filters\Filters.php(265): CodeIgniter\Filters\Filters->processAliasesToClass('after')
+#2 D:\coding\ci4\vendor\codeigniter4\framework\system\Filters\Filters.php(168): CodeIgniter\Filters\Filters->initialize('/')
+#3 D:\coding\ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(407): CodeIgniter\Filters\Filters->run('/', 'before')
+#4 D:\coding\ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(336): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 D:\coding\ci4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 D:\coding\ci4\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('D:\\coding\\ci4\\p...')
+#7 {main}
+CRITICAL - 2021-08-26 14:49:57 --> toolbar filter must have a matching alias defined.
+#0 D:\coding\ci4\vendor\codeigniter4\framework\system\Filters\Filters.php(546): CodeIgniter\Filters\Exceptions\FilterException::forNoAlias('toolbar')
+#1 D:\coding\ci4\vendor\codeigniter4\framework\system\Filters\Filters.php(265): CodeIgniter\Filters\Filters->processAliasesToClass('after')
+#2 D:\coding\ci4\vendor\codeigniter4\framework\system\Filters\Filters.php(168): CodeIgniter\Filters\Filters->initialize('home')
+#3 D:\coding\ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(407): CodeIgniter\Filters\Filters->run('home', 'before')
+#4 D:\coding\ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(336): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 D:\coding\ci4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 D:\coding\ci4\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('D:\\coding\\ci4\\p...')
+#7 {main}
+CRITICAL - 2021-08-26 14:51:01 --> toolbar filter must have a matching alias defined.
+#0 D:\coding\ci4\vendor\codeigniter4\framework\system\Filters\Filters.php(546): CodeIgniter\Filters\Exceptions\FilterException::forNoAlias('toolbar')
+#1 D:\coding\ci4\vendor\codeigniter4\framework\system\Filters\Filters.php(265): CodeIgniter\Filters\Filters->processAliasesToClass('after')
+#2 D:\coding\ci4\vendor\codeigniter4\framework\system\Filters\Filters.php(168): CodeIgniter\Filters\Filters->initialize('home')
+#3 D:\coding\ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(407): CodeIgniter\Filters\Filters->run('home', 'before')
+#4 D:\coding\ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(336): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 D:\coding\ci4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 D:\coding\ci4\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('D:\\coding\\ci4\\p...')
+#7 {main}
+CRITICAL - 2021-08-26 14:51:09 --> toolbar filter must have a matching alias defined.
+#0 D:\coding\ci4\vendor\codeigniter4\framework\system\Filters\Filters.php(546): CodeIgniter\Filters\Exceptions\FilterException::forNoAlias('toolbar')
+#1 D:\coding\ci4\vendor\codeigniter4\framework\system\Filters\Filters.php(265): CodeIgniter\Filters\Filters->processAliasesToClass('after')
+#2 D:\coding\ci4\vendor\codeigniter4\framework\system\Filters\Filters.php(168): CodeIgniter\Filters\Filters->initialize('home')
+#3 D:\coding\ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(407): CodeIgniter\Filters\Filters->run('home', 'before')
+#4 D:\coding\ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(336): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 D:\coding\ci4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 D:\coding\ci4\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('D:\\coding\\ci4\\p...')
+#7 {main}
+CRITICAL - 2021-08-26 14:51:21 --> toolbar filter must have a matching alias defined.
+#0 D:\coding\ci4\vendor\codeigniter4\framework\system\Filters\Filters.php(546): CodeIgniter\Filters\Exceptions\FilterException::forNoAlias('toolbar')
+#1 D:\coding\ci4\vendor\codeigniter4\framework\system\Filters\Filters.php(265): CodeIgniter\Filters\Filters->processAliasesToClass('after')
+#2 D:\coding\ci4\vendor\codeigniter4\framework\system\Filters\Filters.php(168): CodeIgniter\Filters\Filters->initialize('home')
+#3 D:\coding\ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(407): CodeIgniter\Filters\Filters->run('home', 'before')
+#4 D:\coding\ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(336): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 D:\coding\ci4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#6 D:\coding\ci4\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('D:\\coding\\ci4\\p...')
+#7 {main}
