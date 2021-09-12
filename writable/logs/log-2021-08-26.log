@@ -149,3 +149,14 @@ CRITICAL - 2021-08-26 15:18:54 --> strong_password is not a valid rule.
 #7 D:\coding\ci4\public\index.php(37): CodeIgniter\CodeIgniter->run()
 #8 D:\coding\ci4\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('D:\\coding\\ci4\\p...')
 #9 {main}
+CRITICAL - 2021-08-26 22:14:46 --> strong_password is not a valid rule.
+#0 D:\coding\ci4\vendor\codeigniter4\framework\system\Validation\Validation.php(321): CodeIgniter\Validation\Exceptions\ValidationException::forRuleNotFound('strong_password')
+#1 D:\coding\ci4\vendor\codeigniter4\framework\system\Validation\Validation.php(159): CodeIgniter\Validation\Validation->processRules('password', 'password', 'Suksesamin123', Array, Array)
+#2 D:\coding\ci4\vendor\codeigniter4\framework\system\Controller.php(183): CodeIgniter\Validation\Validation->run()
+#3 D:\coding\ci4\vendor\agungsugiarto\boilerplate\src\Controllers\Users\UserController.php(131): CodeIgniter\Controller->validate(Array)
+#4 D:\coding\ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(928): agungsugiarto\boilerplate\Controllers\Users\UserController->create()
+#5 D:\coding\ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(436): CodeIgniter\CodeIgniter->runController(Object(agungsugiarto\boilerplate\Controllers\Users\UserController))
+#6 D:\coding\ci4\vendor\codeigniter4\framework\system\CodeIgniter.php(336): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\coding\ci4\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 D:\coding\ci4\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(45): require_once('D:\\coding\\ci4\\p...')
+#9 {main}
