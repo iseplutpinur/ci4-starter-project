@@ -1,4 +1,6 @@
-<?php namespace Myth\Auth\Exceptions;
+<?php
+
+namespace Myth\Auth\Exceptions;
 
 /**
  * Provides a domain-level interface for broad capture

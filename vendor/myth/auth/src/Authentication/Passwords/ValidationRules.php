@@ -1,4 +1,6 @@
-<?php namespace Myth\Auth\Authentication\Passwords;
+<?php
+
+namespace Myth\Auth\Authentication\Passwords;
 
 use Myth\Auth\Entities\User;
 
@@ -33,25 +35,18 @@ class ValidationRules
     {
         $checker = service('passwords');
 
-        if (function_exists('user') && user())
-        {
+        if (function_exists('user') && user()) {
             $user = user();
-        }
-        else
-        {
+        } else {
             $user = empty($data) ? $this->buildUserFromRequest() : $this->buildUserFromData($data);
         }
 
         $result = $checker->check($value, $user);
 
-        if ($result === false)
-        {
-            if (empty($data))
-            {
+        if ($result === false) {
+            if (empty($data)) {
                 $error1 = $checker->error();
-            }
-            else
-            {
+            } else {
                 $error2 = $checker->error();
             }
         }
@@ -102,5 +97,4 @@ class ValidationRules
 
         return $fields;
     }
-
 }

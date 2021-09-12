@@ -45,12 +45,12 @@ class Auth extends \Myth\Auth\Config\Auth
 	// ];
 
 	public $views = [
-		'login'           => 'agungsugiarto\boilerplate\Views\Authentication\login',
-		'register'        => 'agungsugiarto\boilerplate\Views\Authentication\register',
-		'forgot'          => 'agungsugiarto\boilerplate\Views\Authentication\forgot',
-		'reset'           => 'agungsugiarto\boilerplate\Views\Authentication\reset',
-		'emailForgot'     => 'agungsugiarto\boilerplate\Views\Authentication\emails\forgot',
-		'emailActivation' => 'agungsugiarto\boilerplate\Views\Authentication\emails\activation',
+		'login'           => 'App\Views\Authentication\login',
+		'register'        => 'App\Views\Authentication\register',
+		'forgot'          => 'App\Views\Authentication\forgot',
+		'reset'           => 'App\Views\Authentication\reset',
+		'emailForgot'     => 'App\Views\Authentication\emails\forgot',
+		'emailActivation' => 'App\Views\Authentication\emails\activation',
 	];
 
 	/**

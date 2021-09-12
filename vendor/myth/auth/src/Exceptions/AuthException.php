@@ -1,4 +1,6 @@
-<?php namespace Myth\Auth\Exceptions;
+<?php
+
+namespace Myth\Auth\Exceptions;
 
 use CodeIgniter\HTTP\Exceptions\HTTPException;
 
@@ -45,7 +47,7 @@ class AuthException extends \DomainException implements ExceptionInterface
     }
 
     /**
-     * When the cURL request (to Have I Been Pwned) in PwnedValidator 
+     * When the cURL request (to Have I Been Pwned) in PwnedValidator
      * throws a HTTPException it is re-thrown as this one
      *
      * @return AuthException
@@ -64,5 +66,4 @@ class AuthException extends \DomainException implements ExceptionInterface
     {
         return new self(lang('Auth.noUserEntity'), 500);
     }
-
 }

@@ -1,4 +1,6 @@
-<?php namespace Myth\Auth\Authentication\Passwords;
+<?php
+
+namespace Myth\Auth\Authentication\Passwords;
 
 use CodeIgniter\Entity;
 
@@ -32,16 +34,13 @@ class DictionaryValidator extends BaseValidator implements ValidatorInterface
      *
      * @return boolean
      */
-    public function check(string $password, Entity $user=null): bool
+    public function check(string $password, Entity $user = null): bool
     {
         // Loop over our file
-        $fp = fopen(__DIR__ .'/_dictionary.txt', 'r');
-        if ($fp)
-        {
-            while (($line = fgets($fp, 4096)) !== false)
-            {
-                if ($password == trim($line))
-                {
+        $fp = fopen(__DIR__ . '/_dictionary.txt', 'r');
+        if ($fp) {
+            while (($line = fgets($fp, 4096)) !== false) {
+                if ($password == trim($line)) {
                     fclose($fp);
 
                     $this->error = lang('Auth.errorPasswordCommon');

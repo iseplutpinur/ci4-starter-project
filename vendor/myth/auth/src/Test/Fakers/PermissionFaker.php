@@ -1,4 +1,6 @@
-<?php namespace Myth\Auth\Test\Fakers;
+<?php
+
+namespace Myth\Auth\Test\Fakers;
 
 use Faker\Generator;
 use Myth\Auth\Authorization\PermissionModel;
@@ -15,8 +17,8 @@ class PermissionFaker extends PermissionModel
 	public function fake(Generator &$faker): array
 	{
 		return [
-            'name'        => $faker->word,
-            'description' => $faker->sentence,
+			'name'        => $faker->word,
+			'description' => $faker->sentence,
 		];
 	}
 }

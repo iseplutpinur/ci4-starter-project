@@ -1,4 +1,6 @@
-<?php namespace Myth\Auth\Collectors;
+<?php
+
+namespace Myth\Auth\Collectors;
 
 use CodeIgniter\Debug\Toolbar\Collectors\BaseCollector;
 use Myth\Auth\Authorization\GroupModel;
@@ -51,7 +53,7 @@ class Auth extends BaseCollector
 	{
 		return get_class(service('authentication'));
 	}
-	
+
 	/**
 	 * Returns the data of this collector to be formatted in the toolbar
 	 *
@@ -61,13 +63,12 @@ class Auth extends BaseCollector
 	{
 		$authenticate = service('authentication');
 
-		if ($authenticate->isLoggedIn())
-		{
+		if ($authenticate->isLoggedIn()) {
 			$user   = $authenticate->user();
 			$groups = model(GroupModel::class)->getGroupsForUser($user->id);
 
 			$groupsForUser = implode(', ', array_column($groups, 'name'));
-			
+
 			$html = '<h3>Current User</h3>';
 			$html .= '<table><tbody>';
 			$html .= "<tr><td style='width:150px;'>User ID</td><td>#{$user->id}</td></tr>";
@@ -75,9 +76,7 @@ class Auth extends BaseCollector
 			$html .= "<tr><td>Email</td><td>{$user->email}</td></tr>";
 			$html .= "<tr><td>Groups</td><td>{$groupsForUser}</td></tr>";
 			$html .= '</tbody></table>';
-		}
-		else
-		{
+		} else {
 			$html = '<p>Not logged in.</p>';
 		}
 		return $html;

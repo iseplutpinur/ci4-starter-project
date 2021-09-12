@@ -1,4 +1,6 @@
-<?php namespace Myth\Auth\Test\Fakers;
+<?php
+
+namespace Myth\Auth\Test\Fakers;
 
 use Faker\Generator;
 use Myth\Auth\Entities\User;

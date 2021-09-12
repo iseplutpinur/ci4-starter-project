@@ -1,4 +1,6 @@
-<?php namespace Myth\Auth\Models;
+<?php
+
+namespace Myth\Auth\Models;
 
 use CodeIgniter\Model;
 use Myth\Auth\Authorization\GroupModel;
@@ -112,13 +114,11 @@ class UserModel extends Model
      */
     protected function addToGroup($data)
     {
-        if (is_numeric($this->assignGroup))
-        {
+        if (is_numeric($this->assignGroup)) {
             $groupModel = model(GroupModel::class);
             $groupModel->addUserToGroup($data['id'], $this->assignGroup);
         }
 
         return $data;
     }
-
 }

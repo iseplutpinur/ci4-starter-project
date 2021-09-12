@@ -4,12 +4,11 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit62a7a98b041cdcd939468de5b734cf19
+class ComposerStaticInit9a341583dc2b6b54429f227baf4747d8
 {
     public static $files = array (
         'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
         '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
-        '7e9bd612cc444b3eed788ebbe46263a0' => __DIR__ . '/..' . '/laminas/laminas-zendframework-bridge/src/autoload.php',
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         '3917c79c5052b270641b5a200963dbc2' => __DIR__ . '/..' . '/kint-php/kint/init.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
@@ -20,17 +19,12 @@ class ComposerStaticInit62a7a98b041cdcd939468de5b734cf19
         array (
             'phpDocumentor\\Reflection\\' => 25,
         ),
-        'a' => 
-        array (
-            'agungsugiarto\\boilerplate\\' => 26,
-        ),
         'W' => 
         array (
             'Webmozart\\Assert\\' => 17,
         ),
         'T' => 
         array (
-            'Translations\\' => 13,
             'Tests\\Support\\' => 14,
         ),
         'S' => 
@@ -50,7 +44,6 @@ class ComposerStaticInit62a7a98b041cdcd939468de5b734cf19
         ),
         'L' => 
         array (
-            'Laminas\\ZendFrameworkBridge\\' => 28,
             'Laminas\\Escaper\\' => 16,
         ),
         'K' => 
@@ -84,17 +77,9 @@ class ComposerStaticInit62a7a98b041cdcd939468de5b734cf19
             1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
             2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
         ),
-        'agungsugiarto\\boilerplate\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/agungsugiarto/boilerplate/src',
-        ),
         'Webmozart\\Assert\\' => 
         array (
             0 => __DIR__ . '/..' . '/webmozart/assert/src',
-        ),
-        'Translations\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/codeigniter4/translations',
         ),
         'Tests\\Support\\' => 
         array (
@@ -123,10 +108,6 @@ class ComposerStaticInit62a7a98b041cdcd939468de5b734cf19
         'Myth\\Auth\\' => 
         array (
             0 => __DIR__ . '/..' . '/myth/auth/src',
-        ),
-        'Laminas\\ZendFrameworkBridge\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/laminas/laminas-zendframework-bridge/src',
         ),
         'Laminas\\Escaper\\' => 
         array (
@@ -804,10 +785,10 @@ class ComposerStaticInit62a7a98b041cdcd939468de5b734cf19
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit62a7a98b041cdcd939468de5b734cf19::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit62a7a98b041cdcd939468de5b734cf19::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit62a7a98b041cdcd939468de5b734cf19::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit62a7a98b041cdcd939468de5b734cf19::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit9a341583dc2b6b54429f227baf4747d8::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit9a341583dc2b6b54429f227baf4747d8::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit9a341583dc2b6b54429f227baf4747d8::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit9a341583dc2b6b54429f227baf4747d8::$classMap;
 
         }, null, ClassLoader::class);
     }

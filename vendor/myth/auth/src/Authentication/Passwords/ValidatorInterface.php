@@ -1,4 +1,6 @@
-<?php namespace Myth\Auth\Authentication\Passwords;
+<?php
+
+namespace Myth\Auth\Authentication\Passwords;
 
 use CodeIgniter\Entity;
 
@@ -23,7 +25,7 @@ interface ValidatorInterface
      *
      * @return bool
      */
-    public function check(string $password, Entity $user=null): bool;
+    public function check(string $password, Entity $user = null): bool;
 
     /**
      * Returns the error string that should be displayed to the user.

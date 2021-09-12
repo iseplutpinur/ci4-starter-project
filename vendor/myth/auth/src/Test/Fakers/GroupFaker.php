@@ -1,4 +1,6 @@
-<?php namespace Myth\Auth\Test\Fakers;
+<?php
+
+namespace Myth\Auth\Test\Fakers;
 
 use Faker\Generator;
 use Myth\Auth\Authorization\GroupModel;
@@ -16,8 +18,8 @@ class GroupFaker extends GroupModel
 	public function fake(Generator &$faker): stdClass
 	{
 		return (object) [
-            'name'        => $faker->word,
-            'description' => $faker->sentence,
+			'name'        => $faker->word,
+			'description' => $faker->sentence,
 		];
 	}
 }

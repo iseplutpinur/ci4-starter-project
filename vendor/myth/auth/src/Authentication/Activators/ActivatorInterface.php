@@ -1,4 +1,6 @@
-<?php namespace Myth\Auth\Authentication\Activators;
+<?php
+
+namespace Myth\Auth\Authentication\Activators;
 
 use Myth\Auth\Entities\User;
 
@@ -24,5 +26,4 @@ interface ActivatorInterface
      * @return string
      */
     public function error(): string;
-
 }

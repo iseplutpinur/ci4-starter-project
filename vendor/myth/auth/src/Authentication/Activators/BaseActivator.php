@@ -1,4 +1,6 @@
-<?php namespace Myth\Auth\Authentication\Activators;
+<?php
+
+namespace Myth\Auth\Authentication\Activators;
 
 use Myth\Auth\Config\Auth as AuthConfig;
 use Myth\Auth\Entities\User;

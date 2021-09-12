@@ -1,12 +1,14 @@
-<?php namespace Myth\Auth\Authentication\Activators;
+<?php
+
+namespace Myth\Auth\Authentication\Activators;
 
 use Myth\Auth\Entities\User;
 
 class UserActivator extends BaseActivator implements ActivatorInterface
 {
 	/**
-     * Sends activation message to the user via specified class
-     * in `$requireActivation` setting in Config\Auth.php.
+	 * Sends activation message to the user via specified class
+	 * in `$requireActivation` setting in Config\Auth.php.
 	 *
 	 * @param User $user
 	 *
@@ -14,8 +16,7 @@ class UserActivator extends BaseActivator implements ActivatorInterface
 	 */
 	public function send(User $user = null): bool
 	{
-		if (! $this->config->requireActivation)
-		{
+		if (!$this->config->requireActivation) {
 			return true;
 		}
 
@@ -24,9 +25,8 @@ class UserActivator extends BaseActivator implements ActivatorInterface
 		$class = new $className();
 		$class->setConfig($this->config);
 
-		if ($class->send($user) === false)
-		{
-            log_message('error', "Failed to send activation messaage to: {$user->email}");
+		if ($class->send($user) === false) {
+			log_message('error', "Failed to send activation messaage to: {$user->email}");
 			$this->error = $class->error();
 
 			return false;

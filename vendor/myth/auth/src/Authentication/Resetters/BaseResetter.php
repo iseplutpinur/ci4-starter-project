@@ -1,4 +1,6 @@
-<?php namespace Myth\Auth\Authentication\Resetters;
+<?php
+
+namespace Myth\Auth\Authentication\Resetters;
 
 use Myth\Auth\Config\Auth as AuthConfig;
 use Myth\Auth\Entities\User;

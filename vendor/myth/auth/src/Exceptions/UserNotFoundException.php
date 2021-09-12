@@ -1,4 +1,6 @@
-<?php namespace Myth\Auth\Exceptions;
+<?php
+
+namespace Myth\Auth\Exceptions;
 
 class UserNotFoundException extends \RuntimeException implements ExceptionInterface
 {

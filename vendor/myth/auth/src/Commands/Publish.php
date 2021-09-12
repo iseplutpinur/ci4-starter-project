@@ -1,4 +1,6 @@
-<?php namespace Myth\Auth\Commands;
+<?php
+
+namespace Myth\Auth\Commands;
 
 use Config\Autoload;
 use CodeIgniter\CLI\CLI;
@@ -77,51 +79,43 @@ class Publish extends BaseCommand
         $this->determineSourcePath();
 
         // Migration
-        if (CLI::prompt('Publish Migration?', ['y', 'n']) == 'y')
-        {
+        if (CLI::prompt('Publish Migration?', ['y', 'n']) == 'y') {
             $this->publishMigration();
         }
 
         // Models
-        if (CLI::prompt('Publish Models?', ['y', 'n']) == 'y')
-        {
+        if (CLI::prompt('Publish Models?', ['y', 'n']) == 'y') {
             $this->publishModels();
         }
 
         // Entities
-        if (CLI::prompt('Publish Entities?', ['y', 'n']) == 'y')
-        {
+        if (CLI::prompt('Publish Entities?', ['y', 'n']) == 'y') {
             $this->publishEntities();
         }
 
         // Controller
-        if (CLI::prompt('Publish Controller?', ['y', 'n']) == 'y')
-        {
+        if (CLI::prompt('Publish Controller?', ['y', 'n']) == 'y') {
             $this->publishController();
         }
 
         // Views
-        if (CLI::prompt('Publish Views?', ['y', 'n']) == 'y')
-        {
+        if (CLI::prompt('Publish Views?', ['y', 'n']) == 'y') {
             $this->publishViews();
             $this->viewsPublished = true;
         }
 
         // Filters
-        if (CLI::prompt('Publish Filters?', ['y', 'n']) == 'y')
-        {
+        if (CLI::prompt('Publish Filters?', ['y', 'n']) == 'y') {
             $this->publishFilters();
         }
 
         // Config
-        if (CLI::prompt('Publish Config file?', ['y', 'n']) == 'y')
-        {
+        if (CLI::prompt('Publish Config file?', ['y', 'n']) == 'y') {
             $this->publishConfig();
         }
 
         // Language
-        if (CLI::prompt('Publish Language file?', ['y', 'n']) == 'y')
-        {
+        if (CLI::prompt('Publish Language file?', ['y', 'n']) == 'y') {
             $this->publishLanguage();
         }
     }
@@ -130,8 +124,7 @@ class Publish extends BaseCommand
     {
         $models = ['LoginModel', 'UserModel'];
 
-        foreach ($models as $model)
-        {
+        foreach ($models as $model) {
             $path = "{$this->sourcePath}/Models/{$model}.php";
 
             $content = file_get_contents($path);
@@ -166,15 +159,12 @@ class Publish extends BaseCommand
         $map = directory_map($this->sourcePath . '/Views');
         $prefix = '';
 
-        foreach ($map as $key => $view)
-        {
-            if (is_array($view))
-            {
+        foreach ($map as $key => $view) {
+            if (is_array($view)) {
                 $oldPrefix = $prefix;
                 $prefix .= $key;
 
-                foreach ($view as $file)
-                {
+                foreach ($view as $file) {
                     $this->publishView($file, $prefix);
                 }
 
@@ -190,10 +180,10 @@ class Publish extends BaseCommand
     protected function publishView($view, string $prefix = '')
     {
         $path = "{$this->sourcePath}/Views/{$prefix}{$view}";
-		$namespace = defined('APP_NAMESPACE') ? APP_NAMESPACE : 'App';
+        $namespace = defined('APP_NAMESPACE') ? APP_NAMESPACE : 'App';
 
         $content = file_get_contents($path);
-        $content = str_replace('Myth\Auth\Views', $namespace.'\Auth', $content);
+        $content = str_replace('Myth\Auth\Views', $namespace . '\Auth', $content);
 
         $this->writeFile("Views/Auth/{$prefix}{$view}", $content);
     }
@@ -202,8 +192,7 @@ class Publish extends BaseCommand
     {
         $filters = ['LoginFilter', 'PermissionFilter', 'RoleFilter'];
 
-        foreach ($filters as $filter)
-        {
+        foreach ($filters as $filter) {
             $path = "{$this->sourcePath}/Filters/{$filter}.php";
 
             $content = file_get_contents($path);
@@ -217,8 +206,7 @@ class Publish extends BaseCommand
     {
         $map = directory_map($this->sourcePath . '/Database/Migrations');
 
-        foreach ($map as $file)
-        {
+        foreach ($map as $file) {
             $content = file_get_contents("{$this->sourcePath}/Database/Migrations/{$file}");
             $content = $this->replaceNamespace($content, 'Myth\Auth\Database\Migrations', 'Database\Migrations');
 
@@ -238,8 +226,7 @@ class Publish extends BaseCommand
         $content = str_replace('extends BaseConfig', "extends \Myth\Auth\Config\Auth", $content);
 
         // are we also changing the views?
-        if ($this->viewsPublished)
-        {
+        if ($this->viewsPublished) {
             $namespace = defined('APP_NAMESPACE') ? APP_NAMESPACE : 'App';
             $content = str_replace('Myth\Auth\Views', $namespace . '\Views', $content);
         }
@@ -286,8 +273,7 @@ class Publish extends BaseCommand
     {
         $this->sourcePath = realpath(__DIR__ . '/../');
 
-        if ($this->sourcePath == '/' || empty($this->sourcePath))
-        {
+        if ($this->sourcePath == '/' || empty($this->sourcePath)) {
             CLI::error('Unable to determine the correct source directory. Bailing.');
             exit();
         }
@@ -308,28 +294,22 @@ class Publish extends BaseCommand
         $filename = $appPath . $path;
         $directory = dirname($filename);
 
-        if (! is_dir($directory))
-        {
+        if (!is_dir($directory)) {
             mkdir($directory, 0777, true);
         }
 
-        if (file_exists($filename))
-        {
+        if (file_exists($filename)) {
             $overwrite = (bool) CLI::getOption('f');
 
-            if (! $overwrite && CLI::prompt("  File '{$path}' already exists in destination. Overwrite?", ['n', 'y']) === 'n')
-            {
+            if (!$overwrite && CLI::prompt("  File '{$path}' already exists in destination. Overwrite?", ['n', 'y']) === 'n') {
                 CLI::error("  Skipped {$path}. If you wish to overwrite, please use the '-f' option or reply 'y' to the prompt.");
                 return;
             }
         }
 
-        if (write_file($filename, $content))
-        {
+        if (write_file($filename, $content)) {
             CLI::write(CLI::color('  Created: ', 'green') . $path);
-        }
-        else
-        {
+        } else {
             CLI::error("  Error creating {$path}.");
         }
     }

@@ -1,8 +1,11 @@
-<?php namespace Myth\Auth;
+<?php
+
+namespace Myth\Auth;
 
 use CodeIgniter\Router\Exceptions\RedirectException;
 
-trait AuthTrait {
+trait AuthTrait
+{
 
     /**
      * Instance of Authentication Class
@@ -35,28 +38,24 @@ trait AuthTrait {
      * @return bool
      * @throws RedirectException
      */
-    public function restrict(string $uri=null, bool $returnOnly=false)
+    public function restrict(string $uri = null, bool $returnOnly = false)
     {
         $this->setupAuthClasses();
 
-        if ($this->authenticate->check())
-        {
+        if ($this->authenticate->check()) {
             return true;
         }
 
-        if (method_exists($this, 'setMessage'))
-        {
+        if (method_exists($this, 'setMessage')) {
             session()->setFlashdata('error', lang('Auth.notLoggedIn'));
         }
 
-        if ($returnOnly)
-        {
+        if ($returnOnly) {
             return false;
         }
 
-        if (empty($uri))
-        {
-            throw new RedirectException( route_to('login') );
+        if (empty($uri)) {
+            throw new RedirectException(route_to('login'));
         }
 
         throw new RedirectException($uri);
@@ -84,29 +83,25 @@ trait AuthTrait {
      * @return bool
      * @throws RedirectException
      */
-    public function restrictToGroups($groups, $uri=null)
+    public function restrictToGroups($groups, $uri = null)
     {
         $this->setupAuthClasses();
 
-        if ($this->authenticate->check())
-        {
-            if ($this->authorize->inGroup($groups, $this->authenticate->id() ) )
-            {
+        if ($this->authenticate->check()) {
+            if ($this->authorize->inGroup($groups, $this->authenticate->id())) {
                 return true;
             }
         }
 
-        if (method_exists($this, 'setMessage'))
-        {
+        if (method_exists($this, 'setMessage')) {
             session()->setFlashdata('error', lang('Auth.notEnoughPrivilege'));
         }
 
-        if (empty($uri))
-        {
-            throw new RedirectException( route_to('login') .'?request_uri='. current_url() );
+        if (empty($uri)) {
+            throw new RedirectException(route_to('login') . '?request_uri=' . current_url());
         }
 
-        throw new RedirectException($uri .'?request_uri='. current_url());
+        throw new RedirectException($uri . '?request_uri=' . current_url());
     }
 
     /**
@@ -124,29 +119,25 @@ trait AuthTrait {
      * @return bool
      * @throws RedirectException
      */
-    public function restrictWithPermissions($permissions, $uri=null)
+    public function restrictWithPermissions($permissions, $uri = null)
     {
         $this->setupAuthClasses();
 
-        if ($this->authenticate->check())
-        {
-            if ($this->authorize->hasPermission($permissions, $this->authenticate->id() ) )
-            {
+        if ($this->authenticate->check()) {
+            if ($this->authorize->hasPermission($permissions, $this->authenticate->id())) {
                 return true;
             }
         }
 
-        if (method_exists($this, 'setMessage'))
-        {
+        if (method_exists($this, 'setMessage')) {
             session()->setFlashdata('error', lang('Auth.notEnoughPrivilege'));
         }
 
-        if (empty($uri))
-        {
-            throw new RedirectException( route_to('login') .'?request_uri='. current_url() );
+        if (empty($uri)) {
+            throw new RedirectException(route_to('login') . '?request_uri=' . current_url());
         }
 
-        throw new RedirectException($uri .'?request_uri='. current_url());
+        throw new RedirectException($uri . '?request_uri=' . current_url());
     }
 
     /**
@@ -159,8 +150,7 @@ trait AuthTrait {
      */
     public function setupAuthClasses()
     {
-        if ($this->classesLoaded)
-        {
+        if ($this->classesLoaded) {
             return;
         }
 
@@ -179,5 +169,4 @@ trait AuthTrait {
 
         $this->classesLoaded = true;
     }
-
 }
