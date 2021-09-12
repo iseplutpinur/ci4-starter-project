@@ -40,14 +40,14 @@ class BoilerplateSeeder extends Seeder
         $this->users->save(new User([
             'email'    => 'admin@admin.com',
             'username' => 'admin',
-            'password' => 'super-admin',
+            'password' => '123456',
             'active'   => '1',
         ]));
 
         $this->users->save(new User([
             'email'    => 'user@user.com',
             'username' => 'user',
-            'password' => 'super-user',
+            'password' => '123456',
             'active'   => '1',
         ]));
 
