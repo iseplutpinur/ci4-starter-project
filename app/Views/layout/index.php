@@ -85,9 +85,9 @@
     <!-- Main Footer -->
     <footer class="main-footer">
       <!-- To the right -->
-      <div class="float-right d-none d-sm-inline">
+      <!-- <div class="float-right d-none d-sm-inline">
         <strong><a href="https://github.com/agungsugiarto/boilerplate">Boilerplate</a></strong>
-      </div>
+      </div> -->
       <!-- Default to the left -->
       <strong>&copy; <?= date('Y') ?> <a href="<?= config('Boilerplate')->theme['footer']['vendorlink'] ?>"><?= config('Boilerplate')->theme['footer']['vendorname'] ?></a>.</strong> All rights reserved.
     </footer>

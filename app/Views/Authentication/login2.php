@@ -1,12 +1,13 @@
 <?= $this->extend('App\Views\Authentication\index') ?>
 <?= $this->section('content') ?>
-<!-- /.login-logo -->
-<div class="card">
-  <div class="card-body login-card-body">
+<div class="card card-outline card-primary">
+  <div class="card-header text-center">
+    <a href="<?= base_url() ?>" class="h1"><?= config('Boilerplate')->appName ?></a>
+  </div>
+  <div class="card-body">
     <p class="login-box-msg"><?= lang('Auth.loginTitle') ?></p>
     <?= $this->include('App\Views\Authentication\message_block') ?>
-    <form action="<?= route_to('login') ?>" method="post">
-      <?= csrf_field() ?>
+    <form action="<?= route_to('login') ?>" method="post" id="form-login">
       <?php if ($config->validFields === ['email']) { ?>
         <div class="input-group mb-3">
           <input type="email" name="login" class="form-control <?= session('error.login') || session('errors.login') ? 'is-invalid' : '' ?>" placeholder="<?= lang('Auth.email') ?>" value="<?= old('login') ?>" autocomplete="off">
@@ -32,6 +33,7 @@
           </div>
         </div>
       <?php } ?>
+
       <div class="input-group mb-3">
         <input type="password" name="password" class="form-control <?= session('errors.password') ? 'is-invalid' : '' ?>" placeholder="<?= lang('Auth.password') ?>">
         <div class="input-group-append">
@@ -43,24 +45,37 @@
           <?= session('errors.password') ?>
         </div>
       </div>
-      <div class="row">
-        <?php if ($config->allowRemembering) { ?>
+
+      <?php if ($config->allowRemembering) { ?>
+        <div class="row">
           <div class="col-8">
             <div class="icheck-primary">
-              <input type="checkbox" name="remember" id="remember" <?= old('remember') ? 'checked' : '' ?>>
+              <input type="checkbox" id="remember">
               <label for="remember">
-                <?= lang('Auth.rememberMe') ?>
+                Remember Me
               </label>
             </div>
           </div>
-        <?php } ?>
-        <!-- /.col -->
-        <div class="col-4">
-          <button type="submit" class="btn btn-primary btn-block"><?= lang('Auth.signIn') ?></button>
+          <!-- /.col -->
         </div>
-        <!-- /.col -->
+      <?php } ?>
+      <div class="d-flex justify-content-between">
+        <div class="icheck-primary">
+          <input type="checkbox" id="password-visibility">
+          <label for="password-visibility">
+            Show Password
+          </label>
+        </div>
       </div>
     </form>
+
+    <div class="social-auth-links text-center mt-2 mb-3">
+      <button type="submit" form="form-login" class="btn btn-block btn-primary">
+        <?= lang('Auth.signIn') ?>
+      </button>
+    </div>
+    <!-- /.social-auth-links -->
+
     <p class="mb-1">
       <a href="<?= route_to('forgot') ?>"><?= lang('Auth.forgotYourPassword') ?></a>
     </p>
@@ -70,6 +85,20 @@
       </p>
     <?php } ?>
   </div>
-  <!-- /.login-card-body -->
+  <!-- /.card-body -->
 </div>
+<?= $this->endSection() ?>
+<?= $this->section('js') ?>
+<script>
+  $('#password-visibility').change(function() {
+    const password = $('[name=password]')
+
+    // password toggle
+    if (this.checked) {
+      password.attr('type', 'text')
+    } else {
+      password.attr('type', 'password')
+    }
+  })
+</script>
 <?= $this->endSection() ?>

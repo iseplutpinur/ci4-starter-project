@@ -13,7 +13,7 @@ class Boilerplate extends BaseConfig
     // App name
     //--------------------------------------------------------------------------
 
-    public $appName = 'Boilerplate';
+    public $appName = 'CI4 Starter';
 
     //--------------------------------------------------------------------------
     // Dashboard controller
@@ -66,7 +66,7 @@ class Boilerplate extends BaseConfig
                 'bg'   => 'gray-dark',
                 'logo' => [
                     'icon'   => '/assets/images/logo-tp.png', // path to image | this example icon on public root folder.
-                    'text'   => '<strong>Bo</strong>ilerplate',
+                    'text'   => 'CI4 Starter',
                     'shadow' => 2,
                 ],
             ],
@@ -77,7 +77,7 @@ class Boilerplate extends BaseConfig
         ],
         'footer' => [
             'fixed'      => false,
-            'vendorname' => 'Your Awesome Vendor',
+            'vendorname' => 'CI4 Starter',
             'vendorlink' => 'https://your-awesome.com',
         ],
     ];

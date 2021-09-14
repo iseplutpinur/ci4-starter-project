@@ -45,7 +45,7 @@ class Auth extends \Myth\Auth\Config\Auth
 	// ];
 
 	public $views = [
-		'login'           => 'App\Views\Authentication\login',
+		'login'           => 'App\Views\Authentication\login2',
 		'register'        => 'App\Views\Authentication\register',
 		'forgot'          => 'App\Views\Authentication\forgot',
 		'reset'           => 'App\Views\Authentication\reset',

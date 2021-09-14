@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="<?= config('App')->defaultLocale ?>">
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -22,10 +23,10 @@
 
 <body class="hold-transition login-page">
   <div class="login-box">
-    <div class="login-logo">
+    <!-- <div class="login-logo">
       <img src="<?= base_url(config('Boilerplate')->theme['sidebar']['brand']['logo']['icon']) ?>" class="brand-image img-circle elevation-<?= config('Boilerplate')->theme['sidebar']['brand']['logo']['shadow'] ?>">
-      <b><?= config('Boilerplate')->appName ?></b>
-    </div>
+    </div> -->
+    <!-- <b><?= config('Boilerplate')->appName ?></b> -->
     <?= $this->renderSection('content') ?>
   </div>
   <!-- /.login-box -->
@@ -36,6 +37,8 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js"></script>
   <!-- AdminLTE App -->
   <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.0.2/dist/js/adminlte.min.js"></script>
+  <!-- javascript -->
+  <?= $this->renderSection('js') ?>
 
 </body>
 

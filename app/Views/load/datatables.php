@@ -12,9 +12,9 @@
     moment.locale('<?= config('App')->defaultLocale ?>');
 </script>
 <script>
-    $.extend( true, $.fn.dataTable.defaults, {
+    $.extend(true, $.fn.dataTable.defaults, {
         language: {
-            url: "//cdn.datatables.net/plug-ins/1.10.20/i18n/<?= config('Boilerplate')->i18n ?>.json"
+            url: "/assets/language/datatable/<?= config('Boilerplate')->i18n ?>.json"
         }
     });
 </script>
