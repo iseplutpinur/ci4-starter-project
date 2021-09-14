@@ -89,6 +89,24 @@ if (!function_exists('nestable')) {
  * return string hrml
  */
 if (!function_exists('build')) {
+    // $url = menu()[1]->route;
+    // $new_base_url = base_url($url) . ($url == '/' ? '/' : '');
+
+    // $rows_temp = [];
+    // $rows_uri = [];
+    // $from_uri = explode('/', uri_string());
+    // for ($i = 0; $i < count($from_uri); $i++) {
+    //     $rows_temp[$i] = ($i > 0 ? $rows_temp[$i - 1] . '/' : '') . $from_uri[$i];
+    //     if ($rows_temp[$i] != '') {
+    //         $rows_uri[] = base_url($rows_temp[$i]) . ($rows_temp[$i] == '/' ? '/' : '');
+    //     }
+    // }
+    // var_dump($new_base_url);
+    // die;
+    // var_dump(in_array($new_base_url, $rows_uri));
+    // die;
+    // var_dump($rows_temp);
+    // die;
     function build()
     {
         $html = '';

@@ -161,13 +161,13 @@
         title: '<?= session('sweet-error.') ?>'
       });
     <?php } ?>
-    if (window.location.pathname == '/') {
-      $(`.nav-item>.nav-link`).each(function() {
-        if (this.innerText.trim() == 'Dashboard') {
-          $(this).addClass('active');
-        }
-      })
-    }
+    // if (window.location.pathname == '/') {
+    //   $(`.nav-item>.nav-link`).each(function() {
+    //     if (this.innerText.trim() == 'Dashboard') {
+    //       $(this).addClass('active');
+    //     }
+    //   })
+    // }
   </script>
 </body>
 

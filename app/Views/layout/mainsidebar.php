@@ -16,9 +16,23 @@
         <?php } ?>
         <nav class="mt-3">
             <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent <?= config('Boilerplate')->theme['sidebar']['compact'] ? 'nav-compact' : '' ?>" data-widget="treeview" role="menu" data-accordion="false">
-                <?php foreach (menu() as $parent) { ?>
-                    <li class="nav-item has-treeview <?= current_url() == base_url($parent->route) || in_array(uri_string(), array_column($parent->children, 'route')) ? 'menu-open' : '' ?>">
-                        <a href="<?= base_url($parent->route) ?>" class="nav-link <?= current_url() == base_url($parent->route) || in_array(uri_string(), array_column($parent->children, 'route')) ? 'active' : '' ?>">
+                <?php foreach (menu() as $parent) {
+                    $url = $parent->route;
+                    $new_base_url = base_url($url) . ($url == '/' ? '/' : '');
+                    $rows_temp = [];
+                    $rows_uri = [];
+                    $from_uri = explode('/', uri_string());
+                    for ($i = 0; $i < count($from_uri); $i++) {
+                        $rows_temp[$i] = ($i > 0 ? $rows_temp[$i - 1] . '/' : '') . $from_uri[$i];
+                        if ($rows_temp[$i] != '') {
+                            $rows_uri[] = base_url($rows_temp[$i]) . ($rows_temp[$i] == '/' ? '/' : '');
+                        }
+                    }
+                    // var_dump(array_column($parent->children, 'route'));
+
+                ?>
+                    <li class="nav-item has-treeview <?= in_array($new_base_url, $rows_uri)  || in_array(uri_string(), array_column($parent->children, 'route')) ? 'menu-open' : '' ?>">
+                        <a href="<?= $new_base_url ?>" class="nav-link <?= in_array($new_base_url, $rows_uri)  || in_array(uri_string(), array_column($parent->children, 'route')) ? 'active' : '' ?>">
                             <i class="nav-icon <?= $parent->icon ?>"></i>
                             <p>
                                 <?= $parent->title ?>
@@ -31,7 +45,7 @@
                             <ul class="nav nav-treeview">
                                 <?php foreach ($parent->children as $child) { ?>
                                     <li class="nav-item has-treeview">
-                                        <a href="<?= base_url($child->route) ?>" class="nav-link <?= current_url() == base_url($child->route) ? 'active' : '' ?>">
+                                        <a href="<?= base_url($child->route) ?>" class="nav-link <?= in_array(base_url($child->route), $rows_uri) ? 'active' : '' ?>">
                                             <i class="nav-icon <?= $child->icon ?>"></i>
                                             <p><?= $child->title ?></p>
                                         </a>
