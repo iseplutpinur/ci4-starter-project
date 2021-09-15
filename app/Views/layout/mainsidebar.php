@@ -16,45 +16,88 @@
         <?php } ?>
         <nav class="mt-3">
             <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent <?= config('Boilerplate')->theme['sidebar']['compact'] ? 'nav-compact' : '' ?>" data-widget="treeview" role="menu" data-accordion="false">
-                <?php foreach (menu() as $parent) {
-                    $url = $parent->route;
-                    $new_base_url = base_url($url) . ($url == '/' ? '/' : '');
-                    $rows_temp = [];
-                    $rows_uri = [];
-                    $from_uri = explode('/', uri_string());
-                    for ($i = 0; $i < count($from_uri); $i++) {
-                        $rows_temp[$i] = ($i > 0 ? $rows_temp[$i - 1] . '/' : '') . $from_uri[$i];
-                        if ($rows_temp[$i] != '') {
-                            $rows_uri[] = base_url($rows_temp[$i]) . ($rows_temp[$i] == '/' ? '/' : '');
+                <?php {
+                    $menu_rows = [];
+                    foreach (menu() as $parent) {
+                        if ($parent->active == '1') {
+                            $url = $parent->route;
+                            $new_base_url = base_url($url) . ($url == '/' ? '/' : '');
+                            $rows_temp = [];
+                            $rows_uri = [];
+                            $from_uri = explode('/', uri_string());
+
+                            for ($i = 0; $i < count($from_uri); $i++) {
+                                $rows_temp[$i] = ($i > 0 ? $rows_temp[$i - 1] . '/' : '') . $from_uri[$i];
+                                if ($rows_temp[$i] != '') {
+                                    $rows_uri[] = base_url($rows_temp[$i]) . ($rows_temp[$i] == '/' ? '/' : '');
+                                }
+                            }
+
+                            $childs = [];
+                            $parent_active = false;
+                            if (count($parent->children)) {
+                                foreach ($parent->children as $child) {
+                                    if ($child->active == '1') {
+                                        $active = in_array(base_url($child->route), $rows_uri);
+                                        if ($active) {
+                                            $parent_active = true;
+                                        }
+                                        $childs[] = (object)[
+                                            'active' => $active,
+                                            'title' => $child->title,
+                                            'icon' => $child->icon,
+                                            'route' => $child->route,
+                                        ];
+                                    }
+                                }
+                            }
+
+                            $active = in_array($new_base_url, $rows_uri);
+                            $menu_rows[] = (object)[
+                                'active' => $active || $parent_active,
+                                'title' => $parent->title,
+                                'icon' => $parent->icon,
+                                'route' => $parent->route,
+                                'children' => $childs
+                            ];
                         }
                     }
-                    // var_dump(array_column($parent->children, 'route'));
 
-                ?>
-                    <li class="nav-item has-treeview <?= in_array($new_base_url, $rows_uri)  || in_array(uri_string(), array_column($parent->children, 'route')) ? 'menu-open' : '' ?>">
-                        <a href="<?= $new_base_url ?>" class="nav-link <?= in_array($new_base_url, $rows_uri)  || in_array(uri_string(), array_column($parent->children, 'route')) ? 'active' : '' ?>">
-                            <i class="nav-icon <?= $parent->icon ?>"></i>
-                            <p>
-                                <?= $parent->title ?>
-                                <?php if (count($parent->children)) { ?>
-                                    <i class="right fas fa-angle-left"></i>
-                                <?php } ?>
-                            </p>
-                        </a>
-                        <?php if (count($parent->children)) { ?>
-                            <ul class="nav nav-treeview">
-                                <?php foreach ($parent->children as $child) { ?>
-                                    <li class="nav-item has-treeview">
-                                        <a href="<?= base_url($child->route) ?>" class="nav-link <?= in_array(base_url($child->route), $rows_uri) ? 'active' : '' ?>">
-                                            <i class="nav-icon <?= $child->icon ?>"></i>
-                                            <p><?= $child->title ?></p>
-                                        </a>
-                                    </li>
-                                <?php } ?>
-                            </ul>
-                        <?php } ?>
-                    </li>
-                <?php } ?>
+                    $html = '';
+                    foreach ($menu_rows as $parent) {
+                        $open = $parent->active ? 'menu-open' : '';
+                        $active = $parent->active ? 'active' : '';
+                        $link = base_url($parent->route);
+
+                        $html .= "<li class='nav-item has-treeview {$open}'>";
+                        $html .= "<a href='{$link}' class='nav-link {$active}'>";
+                        $html .= "<i class='nav-icon {$parent->icon}'></i>";
+                        $html .= '<p>';
+                        $html .= $parent->title;
+                        if (count($parent->children)) {
+                            $html .= "<i class='right fas fa-angle-left'></i>";
+                        }
+                        $html .= '</p>';
+                        $html .= '</a>';
+                        if (count($parent->children)) {
+                            $html .= "<ul class='nav nav-treeview'>";
+                            foreach ($parent->children as $child) {
+                                $link_child = base_url($child->route);
+                                $active_child = $child->active ? 'active' : '';
+                                $html .= "<li class='nav-item has-treeview'>";
+                                $html .= "<a href='{$link_child}'";
+                                $html .= "class='nav-link {$active_child}'>";
+                                $html .= "<i class='nav-icon {$child->icon}'></i>";
+                                $html .= "<p>{$child->title}</p>";
+                                $html .= '</a>';
+                                $html .= '</li>';
+                            }
+                            $html .= '</ul>';
+                        }
+                        $html .= '</li>';
+                    }
+                    echo $html;
+                } ?>
             </ul>
         </nav>
     </div>
