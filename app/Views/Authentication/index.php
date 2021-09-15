@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title><?= config('Boilerplate')->appName ?></title>
+  <title><?= config('Application')->appName ?></title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -45,9 +45,9 @@
 <body class="hold-transition login-page">
   <div class="login-box">
     <!-- <div class="login-logo">
-      <img src="<?= base_url(config('Boilerplate')->theme['sidebar']['brand']['logo']['icon']) ?>" class="brand-image img-circle elevation-<?= config('Boilerplate')->theme['sidebar']['brand']['logo']['shadow'] ?>">
+      <img src="<?= base_url(config('Application')->theme['sidebar']['brand']['logo']['icon']) ?>" class="brand-image img-circle elevation-<?= config('Application')->theme['sidebar']['brand']['logo']['shadow'] ?>">
     </div> -->
-    <!-- <b><?= config('Boilerplate')->appName ?></b> -->
+    <!-- <b><?= config('Application')->appName ?></b> -->
     <?= $this->renderSection('content') ?>
   </div>
   <!-- /.login-box -->

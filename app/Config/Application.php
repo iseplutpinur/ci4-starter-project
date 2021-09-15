@@ -5,9 +5,9 @@ namespace Config;
 use CodeIgniter\Config\BaseConfig;
 
 /**
- * Class Boilerplate.
+ * Class Application.
  */
-class Boilerplate extends BaseConfig
+class Application extends BaseConfig
 {
     //--------------------------------------------------------------------------
     // App name

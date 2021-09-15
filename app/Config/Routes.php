@@ -45,9 +45,9 @@ $routes->setAutoRoute(true);
  * You will have access to the $routes object within that file without
  * needing to reload it.
  */
-$routes->get('/', config('Boilerplate')->dashboard['controller'], [
-    'filter'    => config('Boilerplate')->dashboard['filter'],
-    'namespace' => config('Boilerplate')->dashboard['namespace'],
+$routes->get('/', config('Application')->dashboard['controller'], [
+    'filter'    => config('Application')->dashboard['filter'],
+    'namespace' => config('Application')->dashboard['namespace'],
 ]);
 
 $routes->group('user', [

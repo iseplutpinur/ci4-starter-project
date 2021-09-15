@@ -334,7 +334,7 @@ CREATE TABLE `migrations` (
 INSERT INTO `migrations` (`id`, `version`, `class`, `group`, `namespace`, `time`, `batch`) VALUES
 (1, '2017-11-20-223112', 'App\\Database\\Migrations\\CreateAuthTables', 'default', 'App', 1629982330, 1),
 (2, '2020-02-03-081118', 'App\\Database\\Migrations\\CreateMenuTable', 'default', 'App', 1629982330, 1),
-(3, '2020-02-03-081118', 'agungsugiarto\\boilerplate\\Database\\Migrations\\CreateMenuTable', 'default', 'App', 1631468101, 2);
+(3, '2020-02-03-081118', 'App\\Database\\Migrations\\CreateMenuTable', 'default', 'App', 1631468101, 2);
 
 -- --------------------------------------------------------
 

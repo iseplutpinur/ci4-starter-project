@@ -2,7 +2,7 @@
 <?= $this->section('content') ?>
 <div class="card card-outline card-primary">
   <div class="card-header text-center">
-    <a href="<?= base_url() ?>" class="h1"><?= config('Boilerplate')->appName ?></a>
+    <a href="<?= base_url() ?>" class="h1"><?= config('Application')->appName ?></a>
   </div>
   <div class="card-body">
     <p class="login-box-msg"><?= lang('Auth.loginTitle') ?></p>

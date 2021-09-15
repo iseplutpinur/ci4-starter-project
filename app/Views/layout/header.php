@@ -1,4 +1,4 @@
-<nav id="nav-top" class="main-header navbar navbar-expand navbar-<?= config('Boilerplate')->theme['navbar']['bg'] ?> navbar-<?= config('Boilerplate')->theme['navbar']['type'] ?> <?= config('Boilerplate')->theme['navbar']['type'] ? '' : 'border-bottom-0' ?>">
+<nav id="nav-top" class="main-header navbar navbar-expand navbar-<?= config('Application')->theme['navbar']['bg'] ?> navbar-<?= config('Application')->theme['navbar']['type'] ?> <?= config('Application')->theme['navbar']['type'] ? '' : 'border-bottom-0' ?>">
     <ul class="nav navbar-nav">
         <li class="nav-item">
             <a class="nav-link sidebar-toggle" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
@@ -8,10 +8,10 @@
     <ul class="navbar-nav ml-auto">
         <!-- Messages Dropdown Menu -->
         <!-- Notifications Dropdown Menu -->
-        <?php if (config('Boilerplate')->theme['navbar']['user']['visible']) { ?>
+        <?php if (config('Application')->theme['navbar']['user']['visible']) { ?>
             <li class="nav-item">
                 <a href="<?= route_to('user-profile') ?>" class="nav-link d-flex align-items-center">
-                    <img src="/assets/images/logo-tp.png" class="avatar-img img-circle bg-gray mr-2 elevation-<?= config('Boilerplate')->theme['navbar']['user']['shadow'] ?>" alt="<?= user()->username ?>" height="32">
+                    <img src="/assets/images/logo-tp.png" class="avatar-img img-circle bg-gray mr-2 elevation-<?= config('Application')->theme['navbar']['user']['shadow'] ?>" alt="<?= user()->username ?>" height="32">
                     <?= user()->username ?>
                 </a>
             </li>
@@ -27,7 +27,7 @@
                 <i class="fas fa-expand-arrows-alt"></i>
             </a>
         </li>
-        <?php if (config('Boilerplate')->theme['navbar']['dropdown-logout']) { ?>
+        <?php if (config('Application')->theme['navbar']['dropdown-logout']) { ?>
             <li class="nav-item dropdown">
                 <a class="nav-link" data-toggle="dropdown" href="#">
                     <i class="fa fa-power-off"></i>

@@ -1,20 +1,20 @@
-<aside class="main-sidebar <?= config('Boilerplate')->theme['sidebar']['border'] ? 'border-right' : '' ?> sidebar-<?= config('Boilerplate')->theme['sidebar']['type'] ?>-<?= config('Boilerplate')->theme['sidebar']['links']['bg'] ?> elevation-<?= config('Boilerplate')->theme['sidebar']['shadow'] ?>">
-    <a href="<?= route_to('/') ?>" class="brand-link <?= !empty(config('Boilerplate')->theme['sidebar']['brand']['bg']) ? 'bg-' . config('Boilerplate')->theme['sidebar']['brand']['bg'] : '' ?>">
-        <img src="<?= base_url(config('Boilerplate')->theme['sidebar']['brand']['logo']['icon']) ?>" class="brand-image img-circle elevation-<?= config('Boilerplate')->theme['sidebar']['brand']['logo']['shadow'] ?>" style="opacity: .8">
-        <span class="brand-text"><?= config('Boilerplate')->theme['sidebar']['brand']['logo']['text'] ?></span>
+<aside class="main-sidebar <?= config('Application')->theme['sidebar']['border'] ? 'border-right' : '' ?> sidebar-<?= config('Application')->theme['sidebar']['type'] ?>-<?= config('Application')->theme['sidebar']['links']['bg'] ?> elevation-<?= config('Application')->theme['sidebar']['shadow'] ?>">
+    <a href="<?= route_to('/') ?>" class="brand-link <?= !empty(config('Application')->theme['sidebar']['brand']['bg']) ? 'bg-' . config('Application')->theme['sidebar']['brand']['bg'] : '' ?>">
+        <img src="<?= base_url(config('Application')->theme['sidebar']['brand']['logo']['icon']) ?>" class="brand-image img-circle elevation-<?= config('Application')->theme['sidebar']['brand']['logo']['shadow'] ?>" style="opacity: .8">
+        <span class="brand-text"><?= config('Application')->theme['sidebar']['brand']['logo']['text'] ?></span>
     </a>
     <div class="sidebar">
-        <?php if (config('Boilerplate')->theme['sidebar']['user']['visible']) { ?>
+        <?php if (config('Application')->theme['sidebar']['user']['visible']) { ?>
             <div class="user-panel py-3 d-flex">
                 <div class="image">
-                    <img src="/assets/images/logo-tp.png" class="img-circle elevation-<?= config('Boilerplate')->theme['sidebar']['user']['shadow'] ?>" alt="User Image">
+                    <img src="/assets/images/logo-tp.png" class="img-circle elevation-<?= config('Application')->theme['sidebar']['user']['shadow'] ?>" alt="User Image">
                 </div>
                 <div class="info">
                     <a href="<?= route_to('user-profile') ?>" class="d-block"><?= user()->username ?></a>
                 </div>
             </div>
         <?php } ?>
-        <?php if (config('Boilerplate')->theme['sidebar']['search']) { ?>
+        <?php if (config('Application')->theme['sidebar']['search']) { ?>
             <!-- SidebarSearch Form -->
             <div class="form-inline">
                 <div class="input-group" data-widget="sidebar-search">
@@ -28,7 +28,7 @@
             </div>
         <?php } ?>
         <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent <?= config('Boilerplate')->theme['sidebar']['compact'] ? 'nav-compact' : '' ?>" data-widget="treeview" role="menu" data-accordion="false">
+            <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent <?= config('Application')->theme['sidebar']['compact'] ? 'nav-compact' : '' ?>" data-widget="treeview" role="menu" data-accordion="false">
                 <?php {
                     $menu_rows = [];
                     foreach (menu() as $parent) {

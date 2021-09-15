@@ -24,11 +24,6 @@ class Filters extends BaseConfig
         'permission' => \App\Filters\PermissionFilter::class,
     ];
 
-    // public $aliases = [
-    // 	'login'      => \Myth\Auth\Filters\LoginFilter::class,
-    // 	'role'       => \agungsugiarto\boilerplate\Filters\RoleFilter::class,
-    // 	'permission' => \agungsugiarto\boilerplate\Filters\PermissionFilter::class,
-    // ];
 
     /**
      * List of filter aliases that are always

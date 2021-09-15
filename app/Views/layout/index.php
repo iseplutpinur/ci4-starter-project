@@ -28,7 +28,7 @@
   <meta name="msapplication-TileImage" content="/assets/favicon/ms-icon-144x144.png">
 
 
-  <title><?= $title ?? '' ?> | <?= config('Boilerplate')->appName ?></title>
+  <title><?= $title ?? '' ?> | <?= config('Application')->appName ?></title>
 
   <!-- bootstrap -->
   <link rel="stylesheet" href="/assets/plugins/bootstrap/css/bootstrap.min.css">
@@ -46,7 +46,7 @@
 
 </head>
 
-<body class="layout-fixed layout-navbar-fixed sidebar-mini <?= config('Boilerplate')->theme['footer']['fixed'] ? 'layout-footer-fixed' : '' ?> <?= config('Boilerplate')->theme['body-sm'] ? 'text-sm' : '' ?>">
+<body class="layout-fixed layout-navbar-fixed sidebar-mini <?= config('Application')->theme['footer']['fixed'] ? 'layout-footer-fixed' : '' ?> <?= config('Application')->theme['body-sm'] ? 'text-sm' : '' ?>">
   <div class="wrapper">
 
     <!-- Navbar -->
@@ -86,10 +86,10 @@
     <footer class="main-footer">
       <!-- To the right -->
       <!-- <div class="float-right d-none d-sm-inline">
-        <strong><a href="https://github.com/agungsugiarto/boilerplate">Boilerplate</a></strong>
+        <strong><a href="https://github.com/iseplutpinur/ci4-starter-project">Boilerplate</a></strong>
       </div> -->
       <!-- Default to the left -->
-      <strong>&copy; <?= date('Y') ?> <a href="<?= config('Boilerplate')->theme['footer']['vendorlink'] ?>"><?= config('Boilerplate')->theme['footer']['vendorname'] ?></a>.</strong> All rights reserved.
+      <strong>&copy; <?= date('Y') ?> <a href="<?= config('Application')->theme['footer']['vendorlink'] ?>"><?= config('Application')->theme['footer']['vendorname'] ?></a>.</strong> All rights reserved.
     </footer>
   </div>
   <!-- ./wrapper -->
