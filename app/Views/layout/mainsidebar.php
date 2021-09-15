@@ -14,7 +14,20 @@
                 </div>
             </div>
         <?php } ?>
-        <nav class="mt-3">
+        <?php if (config('Boilerplate')->theme['sidebar']['search']) { ?>
+            <!-- SidebarSearch Form -->
+            <div class="form-inline">
+                <div class="input-group" data-widget="sidebar-search">
+                    <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+                    <div class="input-group-append">
+                        <button class="btn btn-sidebar">
+                            <i class="fas fa-search fa-fw"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+        <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent <?= config('Boilerplate')->theme['sidebar']['compact'] ? 'nav-compact' : '' ?>" data-widget="treeview" role="menu" data-accordion="false">
                 <?php {
                     $menu_rows = [];
@@ -98,6 +111,12 @@
                     }
                     echo $html;
                 } ?>
+                <li class="nav-item btn-logout">
+                    <a href="#" class="nav-link ">
+                        <i class="nav-icon fas fa-sign-out-alt"></i>
+                        <p>Logout</p>
+                    </a>
+                </li>
             </ul>
         </nav>
     </div>

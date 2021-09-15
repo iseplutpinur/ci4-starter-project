@@ -40,6 +40,16 @@ class MenuController extends BaseController
             'subtitle' => lang('boilerplate.menu.subtitle'),
             'roles'    => $this->authorize->groups(),
             'menus'    => $this->menu->orderBy('sequence', 'asc')->findAll(),
+            'breadcrumb' => [[
+                'title' => 'Dashboard',
+                'route' => '/',
+            ], [
+                'title' => 'User Management',
+                'disabled' => true
+            ], [
+                'title' => 'Menu',
+                'route' => '/menu'
+            ]]
         ]);
     }
 

@@ -168,6 +168,48 @@
     //     }
     //   })
     // }
+
+    $(".btn-logout").click(function() {
+      Swal.fire({
+        title: 'Apakah anda yakin ingin keluar ?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes',
+        inputAttributes: {
+          id: "txt-note",
+        },
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location.href = "<?= route_to('logout') ?>";
+        }
+      })
+    })
+
+    $("#dark-mode-switch").change(function() {
+      setDarkMode(this.checked)
+    })
+
+    function setDarkMode(data) {
+      data = data == 'null' ? false : ((typeof(data) == 'string') ? (data == 'false' ? false : true) : data);
+      if (data) {
+        $("body").addClass("dark-mode")
+        $("#nav-top").removeClass("navbar-white")
+        $("#nav-top").addClass("navbar-dark")
+        $(".preloader").addClass("bg-dark")
+        $("#dark-mode-switch-label").html('<i class="far fa-sun"></i>');
+      } else {
+        $("body").removeClass("dark-mode")
+        $("#nav-top").removeClass("navbar-dark")
+        $(".preloader").removeClass("bg-dark")
+        $("#nav-top").addClass("navbar-white")
+        $("#dark-mode-switch-label").html('<i class="far fa-moon"></i>');
+      }
+      localStorage.setItem('isDarkMode', data);
+      document.querySelector("#dark-mode-switch").checked = data;
+    }
+    setDarkMode(localStorage.getItem('isDarkMode'));
   </script>
 </body>
 

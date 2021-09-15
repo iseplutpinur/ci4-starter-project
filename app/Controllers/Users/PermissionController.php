@@ -51,6 +51,16 @@ class PermissionController extends BaseController
         return view('App\Views\Permission\index', [
             'title'    => lang('boilerplate.permission.title'),
             'subtitle' => lang('boilerplate.permission.subtitle'),
+            'breadcrumb' => [[
+                'title' => 'Dashboard',
+                'route' => '/',
+            ], [
+                'title' => 'User Management',
+                'disabled' => true
+            ], [
+                'title' => 'Permission',
+                'route' => '/permission'
+            ]]
         ]);
     }
 

@@ -49,11 +49,13 @@ class Boilerplate extends BaseConfig
             'type'   => 'light',
             'border' => true,
             'user'   => [
-                'visible' => true,
+                'visible' => false,
                 'shadow'  => 0,
             ],
+            'dropdown-logout'   => false,
         ],
         'sidebar' => [
+            'search'  => true,
             'type'    => 'dark',
             'shadow'  => 4,
             'border'  => false,

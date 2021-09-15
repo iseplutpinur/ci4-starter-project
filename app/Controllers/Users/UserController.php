@@ -49,6 +49,18 @@ class UserController extends BaseController
         return view('App\Views\User\index', [
             'title'    => lang('boilerplate.user.title'),
             'subtitle' => lang('boilerplate.user.subtitle'),
+            // 'title_show' => false,
+            // 'breadcump_show' => false,
+            'breadcrumb' => [[
+                'title' => 'Dashboard',
+                'route' => '/',
+            ], [
+                'title' => 'User Management',
+                'disabled' => true
+            ], [
+                'title' => 'Users',
+                'route' => uri_string()
+            ]]
         ]);
     }
 
@@ -90,6 +102,16 @@ class UserController extends BaseController
 
         return view('App\Views\User\profile', [
             'title' => lang('boilerplate.user.fields.profile'),
+            'breadcrumb' => [[
+                'title' => 'Dashboard',
+                'route' => '/',
+            ], [
+                'title' => 'User Management',
+                'disabled' => true
+            ], [
+                'title' => 'User Profile',
+                'route' => '/user/profile'
+            ]]
         ]);
     }
 

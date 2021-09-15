@@ -41,6 +41,10 @@ class BaseController extends Controller
     /**
      * Constructor.
      */
+
+    protected $title_show = true;
+    protected $breadcrumb_show = true;
+
     public function initController(RequestInterface $request, ResponseInterface $response, LoggerInterface $logger)
     {
         // Do Not Edit This Line

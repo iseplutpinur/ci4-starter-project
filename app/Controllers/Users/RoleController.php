@@ -43,10 +43,23 @@ class RoleController extends BaseController
             ));
         }
 
+        $breadcrumb = [
+            [
+                'title' => 'Dashboard',
+                'route' => '/',
+            ], [
+                'title' => 'User Management',
+                'disabled' => true
+            ], [
+                'title' => 'Roles',
+                'route' => uri_string()
+            ],
+        ];
         return view('App\Views\Role\index', [
             'title'    => lang('boilerplate.role.title'),
             'subtitle' => lang('boilerplate.role.subtitle'),
             'data'     => $this->authorize->permissions(),
+            'breadcrumb' => $breadcrumb
         ]);
     }
 
@@ -57,10 +70,27 @@ class RoleController extends BaseController
      */
     public function new()
     {
+        $breadcrumb = [
+            [
+                'title' => 'Dashboard',
+                'route' => '/',
+            ], [
+                'title' => 'User Management',
+                'disabled' => true
+            ], [
+                'title' => 'Roles',
+                'route' => '/role'
+            ], [
+                'title' => 'Add Role',
+                'route' => uri_string()
+            ],
+        ];
+
         $data = [
             'title'    => lang('boilerplate.role.title'),
             'subtitle' => lang('boilerplate.role.add'),
             'data'     => $this->authorize->permissions(),
+            'breadcrumb' => $breadcrumb
         ];
 
         return view('App\Views\Role\create', $data);
@@ -118,13 +148,28 @@ class RoleController extends BaseController
         if (is_null($this->authorize->group($id))) {
             return redirect()->back()->with('sweet-error', lang('boilerplate.role.msg.msg_get_fail', [$id]));
         }
-
+        $breadcrumb = [
+            [
+                'title' => 'Dashboard',
+                'route' => '/',
+            ], [
+                'title' => 'User Management',
+                'disabled' => true
+            ], [
+                'title' => 'Roles',
+                'route' => '/role'
+            ], [
+                'title' => 'Edit Role',
+                'route' => uri_string()
+            ],
+        ];
         $data = [
             'title'        => lang('boilerplate.role.title'),
             'subtitle'     => lang('boilerplate.role.edit'),
             'role'         => $this->authorize->group($id),
             'permissions'  => $this->authorize->permissions(),
             'permission'   => $this->authorize->groupPermissions($id),
+            'breadcrumb' => $breadcrumb
         ];
 
         return view('App\Views\Role\edit', $data);

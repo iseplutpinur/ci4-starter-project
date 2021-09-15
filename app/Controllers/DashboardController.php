@@ -11,6 +11,11 @@ class DashboardController extends BaseController
     {
         $data = [
             'title' => 'Dashboard',
+            'breadcrumb' => [[
+                'title' => 'Dashboard',
+                'route' => '/',
+                'disabled' => true
+            ]]
         ];
         return view('Views\dashboard', $data);
     }
