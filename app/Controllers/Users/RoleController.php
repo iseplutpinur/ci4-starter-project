@@ -90,7 +90,8 @@ class RoleController extends BaseController
             'title'    => lang('boilerplate.role.title'),
             'subtitle' => lang('boilerplate.role.add'),
             'data'     => $this->authorize->permissions(),
-            'breadcrumb' => $breadcrumb
+            'breadcrumb' => $breadcrumb,
+            'sidebar'  => 'role'
         ];
 
         return view('App\Views\Role\create', $data);
@@ -169,7 +170,8 @@ class RoleController extends BaseController
             'role'         => $this->authorize->group($id),
             'permissions'  => $this->authorize->permissions(),
             'permission'   => $this->authorize->groupPermissions($id),
-            'breadcrumb' => $breadcrumb
+            'breadcrumb' => $breadcrumb,
+            'sidebar'  => 'role'
         ];
 
         return view('App\Views\Role\edit', $data);

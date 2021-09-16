@@ -127,6 +127,7 @@ class UserController extends BaseController
             'subtitle'    => lang('boilerplate.user.add'),
             'permissions' => $this->authorize->permissions(),
             'roles'       => $this->authorize->groups(),
+            'sidebar'     => 'user/manage'
         ]);
     }
 
@@ -199,6 +200,7 @@ class UserController extends BaseController
             'roles'       => $this->authorize->groups(),
             'role'        => (new GroupModel())->getGroupsForUser($id),
             'user'        => $this->users->asArray()->find($id),
+            'sidebar'     => 'user/manage'
         ];
 
         return view('App\Views\User\update', $data);

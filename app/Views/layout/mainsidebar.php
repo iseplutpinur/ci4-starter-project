@@ -31,27 +31,15 @@
             <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent <?= config('Application')->theme['sidebar']['compact'] ? 'nav-compact' : '' ?>" data-widget="treeview" role="menu" data-accordion="false">
                 <?php {
                     $menu_rows = [];
+                    $sidebar_route = isset($sidebar) ? $sidebar : uri_string();
                     foreach (menu() as $parent) {
                         if ($parent->active == '1') {
-                            $url = $parent->route;
-                            $new_base_url = base_url($url) . ($url == '/' ? '/' : '');
-                            $rows_temp = [];
-                            $rows_uri = [];
-                            $from_uri = explode('/', uri_string());
-
-                            for ($i = 0; $i < count($from_uri); $i++) {
-                                $rows_temp[$i] = ($i > 0 ? $rows_temp[$i - 1] . '/' : '') . $from_uri[$i];
-                                if ($rows_temp[$i] != '') {
-                                    $rows_uri[] = base_url($rows_temp[$i]) . ($rows_temp[$i] == '/' ? '/' : '');
-                                }
-                            }
-
                             $childs = [];
                             $parent_active = false;
                             if (count($parent->children)) {
                                 foreach ($parent->children as $child) {
                                     if ($child->active == '1') {
-                                        $active = in_array(base_url($child->route), $rows_uri);
+                                        $active = $child->route == $sidebar_route;
                                         if ($active) {
                                             $parent_active = true;
                                         }
@@ -65,7 +53,7 @@
                                 }
                             }
 
-                            $active = in_array($new_base_url, $rows_uri);
+                            $active =  $parent->route == $sidebar_route;
                             $menu_rows[] = (object)[
                                 'active' => $active || $parent_active,
                                 'title' => $parent->title,
