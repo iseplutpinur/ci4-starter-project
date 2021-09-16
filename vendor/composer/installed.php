@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '76eafe6db224a171c4a31095a3371ae55e76b4f0',
+        'reference' => 'b65a5c676d8c25d8b5aee6297182203030632721',
         'name' => 'codeigniter4/appstarter',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '76eafe6db224a171c4a31095a3371ae55e76b4f0',
+            'reference' => 'b65a5c676d8c25d8b5aee6297182203030632721',
             'dev_requirement' => false,
         ),
         'codeigniter4/authentication-implementation' => array(
