@@ -94,4 +94,5 @@ return [
     'newPassword'               => 'kata sandi baru',
     'newPasswordRepeat'         => 'Ulangi Kata Sandi Baru',
     'resetPassword'             => 'Atur Ulang Kata Sandi',
+    'full_name'                 => 'Nama Lengkap'
 ];

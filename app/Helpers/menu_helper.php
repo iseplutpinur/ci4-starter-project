@@ -29,17 +29,18 @@ if (!function_exists('menu')) {
                     $data[] = $value;
                 }
             }
-            // cache()->delete('menu');
+            cache()->delete('menu');
             return $data;
         }
 
         // TODO: cache the result
-        // if (! $found = cache('menu')) {
-        //     $data = parse((new MenuModel())->where('active', 1)->orderBy('sequence', 'asc')->get()->getResultObject(), 0);
-        //     cache()->save('menu', $data, 300);
-        // }
-        // return $found;
-        return parse((new GroupMenuModel())->menuHasRole(), 0);
+        if (!$found = cache('menu')) {
+            $found = parse((new MenuModel())->where('active', 1)->orderBy('sequence', 'asc')->get()->getResultObject(), 0);
+            // $found = parse((new GroupMenuModel())->menuHasRole(), 0);
+            cache()->save('menu', $found, 300);
+        }
+        return $found;
+        // return parse((new GroupMenuModel())->menuHasRole(), 0);
     }
 }
 

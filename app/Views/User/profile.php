@@ -41,7 +41,7 @@
                         <form action="<?= route_to('user-profile') ?>" method="post" class="form-horizontal">
                             <?= csrf_field() ?>
                             <div class="form-group row">
-                                <label for="inputName" class="col-sm-3 col-form-label"><?= lang('Auth.email') ?></label>
+                                <label for="email" class="col-sm-3 col-form-label"><?= lang('Auth.email') ?></label>
                                 <div class="col-sm-7">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
@@ -57,7 +57,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="inputName" class="col-sm-3 col-form-label"><?= lang('Auth.username') ?></label>
+                                <label for="username" class="col-sm-3 col-form-label"><?= lang('Auth.username') ?></label>
                                 <div class="col-sm-7">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
@@ -73,7 +73,23 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="inputName2" class="col-sm-3 col-form-label"><?= lang('Auth.password') ?></label>
+                                <label for="full_name" class="col-sm-3 col-form-label"><?= lang('Auth.full_name') ?></label>
+                                <div class="col-sm-7">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                        </div>
+                                        <input type="text" name="full_name" class="form-control <?= session('error.full_name') ? 'is-invalid' : '' ?>" value="<?= user()->full_name ?>" placeholder="<?= lang('Auth.full_name') ?>" autocomplete="off">
+                                        <?php if (session('error.full_name')) { ?>
+                                            <div class="invalid-feedback">
+                                                <h6><?= session('error.full_name') ?></h6>
+                                            </div>
+                                        <?php } ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="password" class="col-sm-3 col-form-label"><?= lang('Auth.password') ?></label>
                                 <div class="col-sm-7">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
@@ -89,7 +105,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="inputName2" class="col-sm-3 col-form-label"><?= lang('Auth.repeatPassword') ?></label>
+                                <label for="pass_confirm" class="col-sm-3 col-form-label"><?= lang('Auth.repeatPassword') ?></label>
                                 <div class="col-sm-7">
                                     <div class="input-group">
                                         <div class="input-group-prepend">

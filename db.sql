@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 16, 2021 at 02:44 PM
+-- Generation Time: Sep 16, 2021 at 07:17 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 7.4.21
 
@@ -69,6 +69,7 @@ INSERT INTO `auth_groups_permissions` (`group_id`, `permission_id`) VALUES
 (1, 2),
 (1, 3),
 (1, 4),
+(3, 1),
 (3, 2);
 
 -- --------------------------------------------------------
@@ -89,7 +90,8 @@ CREATE TABLE `auth_groups_users` (
 INSERT INTO `auth_groups_users` (`group_id`, `user_id`) VALUES
 (1, 1),
 (3, 3),
-(3, 4);
+(3, 4),
+(3, 5);
 
 -- --------------------------------------------------------
 
@@ -175,7 +177,9 @@ INSERT INTO `auth_logins` (`id`, `ip_address`, `email`, `user_id`, `date`, `succ
 (62, '::1', 'iseplutpinur7@gmail.com', 1, '2021-09-16 01:33:43', 1),
 (63, '::1', 'administrator@gmail.com', 3, '2021-09-16 02:45:33', 1),
 (64, '::1', 'iseplutpinur7@gmail.com', 1, '2021-09-16 04:24:39', 1),
-(65, '::1', 'iseplutpinur7@gmail.com', 1, '2021-09-16 07:21:57', 1);
+(65, '::1', 'iseplutpinur7@gmail.com', 1, '2021-09-16 07:21:57', 1),
+(66, '::1', 'administrator@gmail.com', 3, '2021-09-16 07:50:28', 1),
+(67, '::1', 'kepegawaian@gmail.com', 5, '2021-09-16 08:12:58', 1);
 
 -- --------------------------------------------------------
 
@@ -197,7 +201,8 @@ INSERT INTO `auth_permissions` (`id`, `name`, `description`) VALUES
 (1, 'back-office', 'User can access to the administration panel.'),
 (2, 'manage-user', 'User can create, delete or modify the users.'),
 (3, 'role-permission', 'User can edit and define permissions for a role.'),
-(4, 'menu-permission', 'User cand create, delete or modify the menu.');
+(4, 'menu-permission', 'User cand create, delete or modify the menu.'),
+(5, 'barang', 'Dapat mengakses menu barang');
 
 -- --------------------------------------------------------
 
@@ -247,8 +252,9 @@ INSERT INTO `auth_users_permissions` (`user_id`, `permission_id`) VALUES
 (1, 1),
 (2, 1),
 (3, 1),
-(3, 2),
-(4, 2);
+(4, 2),
+(5, 1),
+(5, 2);
 
 -- --------------------------------------------------------
 
@@ -345,6 +351,7 @@ CREATE TABLE `users` (
   `id` int(11) UNSIGNED NOT NULL,
   `email` varchar(255) NOT NULL,
   `username` varchar(30) DEFAULT NULL,
+  `full_name` varchar(50) DEFAULT NULL,
   `password_hash` varchar(255) NOT NULL,
   `reset_hash` varchar(255) DEFAULT NULL,
   `reset_at` datetime DEFAULT NULL,
@@ -363,11 +370,12 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `email`, `username`, `password_hash`, `reset_hash`, `reset_at`, `reset_expires`, `activate_hash`, `status`, `status_message`, `active`, `force_pass_reset`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'iseplutpinur7@gmail.com', 'Isep Lutpi Nur', '$2y$10$7/TSmqe7.UkrBlcLkjpRoeeBT2inW4q/nMvUvBB/MXUa09gUvghg6', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2021-08-26 07:52:10', '2021-09-15 10:40:58', NULL),
-(2, 'user@user.com', 'user', '$2y$10$8y3Xk2sWIJXCH50N8gpxfuP7rwbYee3x0iIoURurIra9h7lsMsNDm', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2021-08-26 07:52:10', '2021-09-15 10:56:04', '2021-09-15 10:56:04'),
-(3, 'administrator@gmail.com', 'Kepegawaian', '$2y$10$4KnIycPrdqYgivXqq4ycVOvV9ythlwhR7Wt4BnnjILmw0iqf2tmR6', 'b11b5612a416b7221b52757f25bcdb84', NULL, '2021-09-15 07:14:54', NULL, NULL, NULL, 1, 0, '2021-08-26 22:23:48', '2021-09-15 11:06:04', NULL),
-(4, 'administrator1@gmail.com', 'manager1', '$2y$10$JIX4Pbm2tmR65vlWIS0xueFDPmYhqIjfokXdXlzqSLuqLQeKEDyXe', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2021-08-26 22:24:55', '2021-08-27 06:25:10', '2021-08-27 06:25:10');
+INSERT INTO `users` (`id`, `email`, `username`, `full_name`, `password_hash`, `reset_hash`, `reset_at`, `reset_expires`, `activate_hash`, `status`, `status_message`, `active`, `force_pass_reset`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'iseplutpinur7@gmail.com', 'iseplutpinur', 'Isep Lutpi Nur', '$2y$10$7/TSmqe7.UkrBlcLkjpRoeeBT2inW4q/nMvUvBB/MXUa09gUvghg6', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2021-08-26 07:52:10', '2021-09-16 12:16:22', NULL),
+(2, 'user@user.com', 'user', 'User', '$2y$10$8y3Xk2sWIJXCH50N8gpxfuP7rwbYee3x0iIoURurIra9h7lsMsNDm', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2021-08-26 07:52:10', '2021-09-15 10:56:04', '2021-09-15 10:56:04'),
+(3, 'administrator@gmail.com', 'administrator', 'Administrator', '$2y$10$4KnIycPrdqYgivXqq4ycVOvV9ythlwhR7Wt4BnnjILmw0iqf2tmR6', 'b11b5612a416b7221b52757f25bcdb84', NULL, '2021-09-15 07:14:54', NULL, NULL, NULL, 1, 0, '2021-08-26 22:23:48', '2021-09-16 07:53:32', NULL),
+(4, 'kepegawaian1@gmail.com', 'kepegawaian1', 'Kepegawaian 1', '$2y$10$JIX4Pbm2tmR65vlWIS0xueFDPmYhqIjfokXdXlzqSLuqLQeKEDyXe', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2021-08-26 22:24:55', '2021-08-27 06:25:10', '2021-08-27 06:25:10'),
+(5, 'kepegawaian@gmail.com', 'kepegawaian', 'Kepegawaian 3', '$2y$10$v1pmVmO7O/zc1eyYW7/rb.IjcvFe/NxQQbWUNqqbeivAFJJE5HcAG', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2021-09-16 08:11:04', '2021-09-16 08:11:17', NULL);
 
 --
 -- Indexes for dumped tables
@@ -482,13 +490,13 @@ ALTER TABLE `auth_groups`
 -- AUTO_INCREMENT for table `auth_logins`
 --
 ALTER TABLE `auth_logins`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- AUTO_INCREMENT for table `auth_permissions`
 --
 ALTER TABLE `auth_permissions`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `auth_reset_attempts`
@@ -524,7 +532,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables

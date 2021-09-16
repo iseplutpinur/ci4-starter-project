@@ -7,7 +7,7 @@
         <?php if (config('Application')->theme['sidebar']['user']['visible']) { ?>
             <div class="user-panel d-flex">
                 <div class="info">
-                    <a href="<?= route_to('user-profile') ?>" class="d-block"><?= user()->username ?></a>
+                    <a href="<?= route_to('user-profile') ?>" class="d-block"><?= user()->full_name ?></a>
                     <small class="form-text text-muted"><?= user_string_role() ?></small>
                 </div>
             </div>
