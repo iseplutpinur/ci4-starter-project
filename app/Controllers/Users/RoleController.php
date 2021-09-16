@@ -133,7 +133,6 @@ class RoleController extends BaseController
 
             return redirect()->back()->with('sweet-error', $e->getMessage());
         }
-
         return redirect()->back()->with('sweet-success', lang('boilerplate.role.msg.msg_insert'));
     }
 
@@ -220,7 +219,7 @@ class RoleController extends BaseController
 
             return redirect()->back()->with('sweet-error', $e->getMessage());
         }
-
+        cache()->deleteMatching('*_group_user_name');
         return redirect()->back()->with('sweet-success', lang('boilerplate.role.msg.msg_update', [$id]));
     }
 
@@ -236,7 +235,7 @@ class RoleController extends BaseController
         if (!$found = $this->authorize->deleteGroup($id)) {
             return $this->failNotFound(lang('boilerplate.role.msg.msg_get_fail', [$id]));
         }
-
+        cache()->deleteMatching('*_group_user_name');
         return $this->respondDeleted($found, lang('boilerplate.role.msg.msg_delete', [$id]));
     }
 }

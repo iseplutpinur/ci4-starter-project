@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use CodeIgniter\Session\Session;
+
 /**
  * Class DashboardController.
  */
@@ -17,6 +19,9 @@ class DashboardController extends BaseController
                 'disabled' => true
             ]]
         ];
+
+        // $session = \Config\Services::session();
+        // in_groups('admin');
         return view('Views\dashboard', $data);
     }
 }

@@ -53,7 +53,28 @@ class GroupModel extends BaseModel
         foreach ($group as $row) {
             $found[$row->id] = strtolower($row->name);
         }
+        return $found;
+    }
 
+    public function getGroupsForUserStringOne(int $userId)
+    {
+        $cache_name = user()->id . '_group_user_name';
+        if (!$found = cache($cache_name)) {
+            $found = $this->builder()
+                ->select('name')
+                ->join('auth_groups_users', 'auth_groups_users.group_id = auth_groups.id', 'left')
+                ->where('user_id', $userId)
+                ->limit(1)
+                ->get()
+                ->getRowObject();
+            if ($found != null) {
+                $found = $found->name;
+                cache()->save($cache_name, $found, 300);
+            } else {
+                cache()->delete($cache_name);
+                $found = '';
+            }
+        }
         return $found;
     }
 }

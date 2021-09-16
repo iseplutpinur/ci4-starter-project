@@ -3,19 +3,13 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 15, 2021 at 06:09 PM
+-- Generation Time: Sep 16, 2021 at 02:44 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 7.4.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `codeigniter_4`
@@ -52,7 +46,7 @@ CREATE TABLE `auth_groups` (
 --
 
 INSERT INTO `auth_groups` (`id`, `name`, `description`) VALUES
-(1, 'admin', 'Administrators. The top of the food chain.'),
+(1, 'Administrator', 'Administrators. The top of the food chain.'),
 (3, 'Kepegawaian', 'Mengurus Bagian User');
 
 -- --------------------------------------------------------
@@ -176,7 +170,12 @@ INSERT INTO `auth_logins` (`id`, `ip_address`, `email`, `user_id`, `date`, `succ
 (57, '::1', 'administrator@gmail.com', 3, '2021-09-15 10:29:02', 1),
 (58, '::1', 'administrator@gmail.com', 3, '2021-09-15 10:45:07', 1),
 (59, '::1', 'iseplutpinur7@gmail.com', 1, '2021-09-15 10:45:20', 1),
-(60, '::1', 'administrator@gmail.com', 3, '2021-09-15 10:46:14', 1);
+(60, '::1', 'administrator@gmail.com', 3, '2021-09-15 10:46:14', 1),
+(61, '::1', 'administrator@gmail.com', 3, '2021-09-16 01:33:29', 1),
+(62, '::1', 'iseplutpinur7@gmail.com', 1, '2021-09-16 01:33:43', 1),
+(63, '::1', 'administrator@gmail.com', 3, '2021-09-16 02:45:33', 1),
+(64, '::1', 'iseplutpinur7@gmail.com', 1, '2021-09-16 04:24:39', 1),
+(65, '::1', 'iseplutpinur7@gmail.com', 1, '2021-09-16 07:21:57', 1);
 
 -- --------------------------------------------------------
 
@@ -269,7 +268,6 @@ CREATE TABLE `groups_menu` (
 
 INSERT INTO `groups_menu` (`id`, `group_id`, `menu_id`) VALUES
 (22, 1, 6),
-(23, 1, 7),
 (35, 1, 5),
 (36, 1, 1),
 (37, 3, 1),
@@ -278,7 +276,8 @@ INSERT INTO `groups_menu` (`id`, `group_id`, `menu_id`) VALUES
 (44, 1, 3),
 (45, 3, 3),
 (46, 1, 4),
-(47, 3, 4);
+(47, 3, 4),
+(49, 1, 7);
 
 -- --------------------------------------------------------
 
@@ -303,13 +302,13 @@ CREATE TABLE `menu` (
 --
 
 INSERT INTO `menu` (`id`, `parent_id`, `active`, `title`, `icon`, `route`, `sequence`, `created_at`, `updated_at`) VALUES
-(1, 0, 1, 'Dashboard', 'fas fa-tachometer-alt', '/', 1, '2021-08-26 07:52:10', '2021-09-15 10:56:55'),
-(2, 0, 1, 'User Management', 'fas fa-user', '#', 2, '2021-08-26 07:52:10', '2021-09-15 11:02:47'),
-(3, 2, 1, 'User Profile', 'fas fa-user-edit', 'user/profile', 3, '2021-08-26 07:52:10', '2021-09-15 11:02:53'),
-(4, 2, 1, 'Users', 'fas fa-users', 'user/manage', 7, '2021-08-26 07:52:10', '2021-09-15 11:03:45'),
-(5, 2, 1, 'Permissions', 'fas fa-user-lock', 'permission', 4, '2021-08-26 07:52:10', '2021-09-15 10:56:55'),
-(6, 2, 1, 'Roles', 'fas fa-users-cog', 'role', 5, '2021-08-26 07:52:10', '2021-09-15 10:56:55'),
-(7, 2, 1, 'Menu', 'fas fa-stream', 'menu', 6, '2021-08-26 07:52:10', '2021-09-15 10:56:55');
+(1, 0, 1, 'Dashboard', 'fas fa-tachometer-alt', '/', 1, '2021-08-26 07:52:10', '2021-09-16 01:54:30'),
+(2, 0, 1, 'User Management', 'fas fa-user', '#', 2, '2021-08-26 07:52:10', '2021-09-16 01:54:30'),
+(3, 2, 1, 'User Profile', 'fas fa-user-edit', 'user/profile', 3, '2021-08-26 07:52:10', '2021-09-16 01:54:30'),
+(4, 2, 1, 'Users', 'fas fa-users', 'user/manage', 6, '2021-08-26 07:52:10', '2021-09-16 01:54:30'),
+(5, 2, 1, 'Permissions', 'fas fa-user-lock', 'permission', 4, '2021-08-26 07:52:10', '2021-09-16 01:54:30'),
+(6, 2, 1, 'Roles', 'fas fa-users-cog', 'role', 5, '2021-08-26 07:52:10', '2021-09-16 01:54:30'),
+(7, 2, 1, 'Menu', 'fas fa-stream', 'menu', 7, '2021-08-26 07:52:10', '2021-09-16 07:43:15');
 
 -- --------------------------------------------------------
 
@@ -334,7 +333,7 @@ CREATE TABLE `migrations` (
 INSERT INTO `migrations` (`id`, `version`, `class`, `group`, `namespace`, `time`, `batch`) VALUES
 (1, '2017-11-20-223112', 'App\\Database\\Migrations\\CreateAuthTables', 'default', 'App', 1629982330, 1),
 (2, '2020-02-03-081118', 'App\\Database\\Migrations\\CreateMenuTable', 'default', 'App', 1629982330, 1),
-(3, '2020-02-03-081118', 'App\\Database\\Migrations\\CreateMenuTable', 'default', 'App', 1631468101, 2);
+(3, '2020-02-03-081118', 'agungsugiarto\\boilerplate\\Database\\Migrations\\CreateMenuTable', 'default', 'App', 1631468101, 2);
 
 -- --------------------------------------------------------
 
@@ -483,7 +482,7 @@ ALTER TABLE `auth_groups`
 -- AUTO_INCREMENT for table `auth_logins`
 --
 ALTER TABLE `auth_logins`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT for table `auth_permissions`
@@ -507,7 +506,7 @@ ALTER TABLE `auth_tokens`
 -- AUTO_INCREMENT for table `groups_menu`
 --
 ALTER TABLE `groups_menu`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `menu`
@@ -565,7 +564,3 @@ ALTER TABLE `groups_menu`
   ADD CONSTRAINT `groups_menu_group_id_foreign` FOREIGN KEY (`group_id`) REFERENCES `auth_groups` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `groups_menu_menu_id_foreign` FOREIGN KEY (`menu_id`) REFERENCES `menu` (`id`) ON DELETE CASCADE;
 COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

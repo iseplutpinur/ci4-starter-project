@@ -5,12 +5,10 @@
     </a>
     <div class="sidebar">
         <?php if (config('Application')->theme['sidebar']['user']['visible']) { ?>
-            <div class="user-panel py-3 d-flex">
-                <div class="image">
-                    <img src="/assets/images/logo-tp.png" class="img-circle elevation-<?= config('Application')->theme['sidebar']['user']['shadow'] ?>" alt="User Image">
-                </div>
+            <div class="user-panel d-flex">
                 <div class="info">
                     <a href="<?= route_to('user-profile') ?>" class="d-block"><?= user()->username ?></a>
+                    <small class="form-text text-muted"><?= user_string_role() ?></small>
                 </div>
             </div>
         <?php } ?>

@@ -2,8 +2,8 @@
 
 use Myth\Auth\Entities\User;
 
-if (! function_exists('logged_in'))
-{
+
+if (!function_exists('logged_in')) {
 	/**
 	 * Checks to see if the user is logged in.
 	 *
@@ -15,8 +15,7 @@ if (! function_exists('logged_in'))
 	}
 }
 
-if (! function_exists('user'))
-{
+if (!function_exists('user')) {
 	/**
 	 * Returns the User instance for the current logged in user.
 	 *
@@ -30,8 +29,7 @@ if (! function_exists('user'))
 	}
 }
 
-if (! function_exists('user_id'))
-{
+if (!function_exists('user_id')) {
 	/**
 	 * Returns the User ID for the current logged in user.
 	 *
@@ -45,8 +43,7 @@ if (! function_exists('user_id'))
 	}
 }
 
-if (! function_exists('in_groups'))
-{
+if (!function_exists('in_groups')) {
 	/**
 	 * Ensures that the current user is in at least one of the passed in
 	 * groups. The groups can be passed in as either ID's or group names.
@@ -65,19 +62,16 @@ if (! function_exists('in_groups'))
 	function in_groups($groups): bool
 	{
 		$authenticate = service('authentication');
-        $authorize    = service('authorization');
+		$authorize    = service('authorization');
+		if ($authenticate->check()) {
+			return $authorize->inGroup($groups, $authenticate->id());
+		}
 
-        if ($authenticate->check())
-        {
-            return $authorize->inGroup($groups, $authenticate->id());
-        }
-
-        return false;
+		return false;
 	}
 }
 
-if (! function_exists('has_permission'))
-{
+if (!function_exists('has_permission')) {
 	/**
 	 * Ensures that the current user has the passed in permission.
 	 * The permission can be passed in either as an ID or name.
@@ -89,13 +83,22 @@ if (! function_exists('has_permission'))
 	function has_permission($permission): bool
 	{
 		$authenticate = service('authentication');
-        $authorize    = service('authorization');
+		$authorize    = service('authorization');
 
-        if ($authenticate->check())
-        {
-            return $authorize->hasPermission($permission, $authenticate->id()) ?? false;
-        }
+		if ($authenticate->check()) {
+			return $authorize->hasPermission($permission, $authenticate->id()) ?? false;
+		}
 
-        return false;
+		return false;
+	}
+}
+
+if (!function_exists('user_string_role')) {
+	/**
+	 * @return string
+	 */
+	function user_string_role(): string
+	{
+		return model(GroupModel::class)->getGroupsForUserStringOne(user_id());
 	}
 }
