@@ -49,6 +49,66 @@ class PermissionModel extends Model
         return $count > 0;
     }
 
+    public function doesUserHavePermissionMod(int $userId, int $permissionId): bool
+    {
+        // get user group and take advantage of caching
+        $userGroupId = $this->getGroupUser($userId);
+
+        // get group permission and and take advantage of caching
+        $groupPermission = $this->getGroupPermissions($userGroupId);
+
+        // Check group permissions
+        return array_key_exists($permissionId, $groupPermission);
+    }
+
+    public function getGroupPermissions(int $groupId)
+    {
+        $cache_name = "{$groupId}_group_permission";
+        if (!$found = cache($cache_name)) {
+            $groups = $this->db
+                ->table('auth_groups_permissions a')
+                ->select('b.id, b.name')
+                ->join('auth_permissions b', 'a.permission_id = b.id')
+                ->where('a.group_id', $groupId)
+                ->get()
+                ->getResultObject();
+
+            $found = [];
+            foreach ($groups as $group) {
+                $found[$group->id] = strtolower($group->name);
+            }
+
+            if (!empty($found)) {
+                cache()->save($cache_name, $found, 300);
+            } else {
+                cache()->delete($cache_name);
+            }
+        }
+
+        return $found;
+    }
+
+    public function getGroupUser(int $userId): ?int
+    {
+        $cache_name = "{$userId}_user_group";
+        if (!$found = cache($cache_name)) {
+            $found = $this->db->table('users')
+                ->select('group_id')
+                ->where('id', $userId)
+                ->get()
+                ->getRowObject();
+            if ($found != null) {
+                $found = $found->group_id;
+                cache()->save($cache_name, $found, 300);
+            } else {
+                cache()->delete($cache_name);
+                $found = 0;
+            }
+        }
+
+        return $found;
+    }
+
     /**
      * Adds a single permission to a single user.
      *

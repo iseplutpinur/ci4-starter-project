@@ -43,7 +43,6 @@ class PermissionFilter implements FilterInterface
         // if no user is logged in then send to the login form
         if (!$authenticate->check()) {
             session()->set('redirect_url', current_url());
-
             return redirect('login');
         }
 
@@ -54,8 +53,6 @@ class PermissionFilter implements FilterInterface
         foreach ($params as $permission) {
             $result = $result && $authorize->hasPermissionMod($permission, $authenticate->id());
         }
-        // var_dump($result);
-        // die;
         if (!$result) {
             if ($authenticate->silent()) {
                 $redirectURL = session('redirect_url') ?? '/';

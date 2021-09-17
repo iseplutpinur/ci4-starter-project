@@ -40,6 +40,8 @@ interface AuthorizeInterface
      */
     public function hasPermission($permission, int $userId);
 
+    public function hasPermissionMod($permission, int $userId);
+
     /**
      * Makes a member a part of a group.
      *

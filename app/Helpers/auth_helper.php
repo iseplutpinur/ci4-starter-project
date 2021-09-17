@@ -86,7 +86,7 @@ if (!function_exists('has_permission')) {
 		$authorize    = service('authorization');
 
 		if ($authenticate->check()) {
-			return $authorize->hasPermission($permission, $authenticate->id()) ?? false;
+			return $authorize->hasPermissionMod($permission, $authenticate->id()) ?? false;
 		}
 
 		return false;

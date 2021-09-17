@@ -1,5 +1,19 @@
 // "myth/auth": "1.0.*"
 
-1. Buat filed user_group di table user
+1. Buat filed user_group di table user ['sudah]
 2. tambah input pada create dan update user
 3. Ubah Level di tampilan user_string_role
+
+
+cache[clear]
+user group [clear]
+group permission [clear]
+
+array_key_exists($permissionId, $userPerms)[clear]
+
+tambah user user role one
+ubah user user role one
+
+delete cache ketika user group diganti
+delete cache ketika group role diupdate
+delete cache ketika menu direfresh

@@ -68,7 +68,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-user"></i></span>
                                 </div>
-                                <input type="text" name="full_name" class="form-control <?= session('error.full_name') ? 'is-invalid' : '' ?>" value="<?= user()->full_name ?>" placeholder="<?= lang('Auth.full_name') ?>" autocomplete="off">
+                                <input type="text" name="full_name" class="form-control <?= session('error.full_name') ? 'is-invalid' : '' ?>" value="<?= $user['full_name'] ?>" placeholder="<?= lang('Auth.full_name') ?>" autocomplete="off">
                                 <?php if (session('error.full_name')) { ?>
                                     <div class="invalid-feedback">
                                         <h6><?= session('error.full_name') ?></h6>
