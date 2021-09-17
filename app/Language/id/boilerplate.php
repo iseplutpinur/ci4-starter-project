@@ -107,6 +107,9 @@ return [
             'join'            => 'Anggota sejak',
             'setting'         => 'Pengaturan',
             'non_active'      => 'Tidak aktif',
+            'email'           => 'Email',
+            'username'        => 'Nama Pengguna',
+            'group_name'      => 'Role'
         ],
         'msg' => [
             'msg_insert'   => 'pengguna berhasil ditambahkan.',

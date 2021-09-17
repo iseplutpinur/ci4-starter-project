@@ -12,13 +12,24 @@
                     <img class="profile-user-img img-fluid img-circle" src="<?= base_url('/assets/template/dist/img/avatar.png') ?>" alt="User profile picture">
                 </div>
                 <h3 class="profile-username text-center"><?= user()->full_name ?></h3>
-                <p class="text-muted text-center"><i class="far fa-fw fa-user"></i><?= user()->username ?></p>
-                <p class="text-muted text-center"><i class="far fa-fw fa-envelope"></i><?= user()->email ?></p>
+                <p class="text-muted text-center"><i class="far fa-fw fa-user"></i><?= user_string_role() ?></p>
                 <ul class="list-group list-group-unbordered mb-3">
                     <li class="list-group-item">
                         <b><?= lang('boilerplate.user.fields.join') ?></b>
                         <a class="float-right">
                             <?= user()->created_at->toLocalizedString('MMM d, yyyy') . ' ' . user()->created_at->humanize() ?>
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <b><?= lang('boilerplate.user.fields.username') ?></b>
+                        <a class="float-right">
+                            <?= user()->username ?>
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <b><?= lang('boilerplate.user.fields.email') ?></b>
+                        <a class="float-right">
+                            <?= user()->email ?>
                         </a>
                     </li>
                 </ul>

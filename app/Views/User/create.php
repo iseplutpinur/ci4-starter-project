@@ -109,24 +109,11 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="inputSkills" class="col-sm-2 col-form-label"><?= lang('boilerplate.permission.title') ?></label>
-                        <div class="col-sm-8">
-                            <select class="form-control select" name="permission[]" multiple="multiple" data-placeholder="<?= lang('boilerplate.permission.fields.plc_name') ?>" style="width: 100%;">
-                                <?php foreach ($permissions as $permission) { ?>
-                                    <option <?= in_array($permission['id'], old('permission', [])) ? 'selected' : '' ?> value="<?= $permission['id'] ?>"><?= $permission['name'] ?></option>
-                                <?php } ?>
-                            </select>
-                            <?php if (session('error.permission')) { ?>
-                                <h6 class="text-danger"><?= session('error.permission') ?></h6>
-                            <?php } ?>
-                        </div>
-                    </div>
-                    <div class="form-group row">
                         <label for="inputSkills" class="col-sm-2 col-form-label"><?= lang('boilerplate.role.title') ?></label>
                         <div class="col-sm-8">
-                            <select class="form-control select" name="role[]" multiple="multiple" data-placeholder="<?= lang('boilerplate.role.fields.plc_name') ?>" style="width: 100%;">
+                            <select class="form-control select" name="role" data-placeholder="<?= lang('boilerplate.role.fields.plc_name') ?>" style="width: 100%;">
                                 <?php foreach ($roles as $role) { ?>
-                                    <option <?= in_array($role->id, old('role', [])) ? 'selected' : '' ?> value="<?= $role->id ?>"><?= $role->name ?></option>
+                                    <option value="<?= $role->id ?>"><?= $role->name ?></option>
                                 <?php } ?>
                             </select>
                             <?php if (session('error.role')) { ?>

@@ -6,7 +6,13 @@ use Myth\Auth\Models\UserModel as BaseModel;
 
 class UserModel extends BaseModel
 {
-    const ORDERABLE = ['username', 'full_name', 'email', 'created_at'];
+    const ORDERABLE = [
+        3 => 'username',
+        1 => 'full_name',
+        4 => 'email',
+        6 => 'created_at',
+        2 => 'auth_groups.name'
+    ];
 
     /**
      * Get resource data.
@@ -18,7 +24,8 @@ class UserModel extends BaseModel
     public function getResource(string $search = '')
     {
         $builder = $this->builder()
-            ->select('id, username, full_name, email, active, created_at');
+            ->select('users.id, username, full_name, email, active, created_at, auth_groups.name as group_name')
+            ->join('auth_groups', 'auth_groups.id = users.group_id');
 
         $condition = empty($search)
             ? $builder
@@ -26,6 +33,7 @@ class UserModel extends BaseModel
             ->like('username', $search)
             ->orLike('full_name', $search)
             ->orLike('email', $search)
+            ->orLike('auth_groups.name', $search)
             ->groupEnd();
 
         return $condition->where('deleted_at', null);

@@ -11,8 +11,8 @@ group permission [clear]
 
 array_key_exists($permissionId, $userPerms)[clear]
 
-tambah user user role one
-ubah user user role one
+tambah user user role one [clear]
+ubah user user role one [clear]
 
 delete cache ketika user group diganti
 delete cache ketika group role diupdate

@@ -7,7 +7,6 @@ use App\Entities\Collection;
 use App\Models\GroupModel;
 use App\Models\UserModel;
 use CodeIgniter\API\ResponseTrait;
-use Myth\Auth\Authorization\PermissionModel;
 use Myth\Auth\Entities\User;
 
 /**
@@ -49,8 +48,6 @@ class UserController extends BaseController
         return view('App\Views\User\index', [
             'title'    => lang('boilerplate.user.title'),
             'subtitle' => lang('boilerplate.user.subtitle'),
-            // 'title_show' => false,
-            // 'breadcump_show' => false,
             'breadcrumb' => [[
                 'title' => 'Dashboard',
                 'route' => '/',
@@ -147,12 +144,8 @@ class UserController extends BaseController
             'full_name'    => "required|min_length[3]",
             'password'     => 'required',
             'pass_confirm' => 'required|matches[password]',
-            'permission'   => 'required',
             'role'         => 'required',
         ];
-
-        $permissions = $this->request->getPost('permission');
-        $roles = $this->request->getPost('role');
 
         if (!$this->validate($validationRules)) {
             return redirect()->back()->withInput()->with('error', $this->validator->getErrors());
@@ -161,21 +154,14 @@ class UserController extends BaseController
         $this->db->transBegin();
 
         try {
-            $id = $this->users->insert(new User([
+            $this->users->insert(new User([
                 'active'   => $this->request->getPost('active'),
                 'email'    => $this->request->getPost('email'),
                 'username' => $this->request->getPost('username'),
                 'full_name' => $this->request->getPost('full_name'),
                 'password' => $this->request->getPost('password'),
+                'group_id' => $this->request->getPost('role'),
             ]));
-
-            foreach ($permissions as $permission) {
-                $this->authorize->addPermissionToUser($permission, $id);
-            }
-
-            foreach ($roles as $role) {
-                $this->authorize->addUserToGroup($id, $role);
-            }
 
             $this->db->transCommit();
         } catch (\Exception $e) {
@@ -184,7 +170,7 @@ class UserController extends BaseController
             return redirect()->back()->with('sweet-error', $e->getMessage());
         }
 
-        return redirect()->back()->with('sweet-success', lang('boileplate.user.msg.msg_insert'));
+        return redirect()->back()->with('sweet-success', lang('boilerplate.user.msg.msg_insert'));
     }
 
     /**
@@ -199,10 +185,7 @@ class UserController extends BaseController
         $data = [
             'title'       => lang('boilerplate.user.title'),
             'subtitle'    => lang('boilerplate.user.edit'),
-            'permissions' => $this->authorize->permissions(),
-            'permission'  => (new PermissionModel())->getPermissionsForUser($id),
             'roles'       => $this->authorize->groups(),
-            'role'        => (new GroupModel())->getGroupsForUser($id),
             'user'        => $this->users->asArray()->find($id),
             'sidebar'     => 'user/manage'
         ];
@@ -247,24 +230,9 @@ class UserController extends BaseController
             $user->email = $this->request->getPost('email');
             $user->username = $this->request->getPost('username');
             $user->full_name = $this->request->getPost('full_name');
+            $user->group_id = $this->request->getPost('role');
 
             $this->users->skipValidation(true)->update($id, $user);
-
-            // delete first permission from user
-            $this->db->table('auth_users_permissions')->where('user_id', $id)->delete();
-
-            foreach ($this->request->getPost('permission') as $permission) {
-                // insert with new permission
-                $this->authorize->addPermissionToUser($permission, $id);
-            }
-
-            // delete first groups from user
-            $this->db->table('auth_groups_users')->where('user_id', $id)->delete();
-
-            foreach ($this->request->getPost('role') as $role) {
-                // insert with new role
-                $this->authorize->addUserToGroup($id, $role);
-            }
 
             $this->db->transCommit();
         } catch (\Exception $e) {

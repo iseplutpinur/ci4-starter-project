@@ -107,6 +107,9 @@
                 'join'            => 'Member since',
                 'setting'         => 'Setting',
                 'non_active'      => 'Non Active',
+                'email'           => 'Email',
+                'username'        => 'Username',
+                'group_name'      => 'Role'
             ],
             'msg' => [
                 'msg_insert'   => 'The user has been correctly added.',

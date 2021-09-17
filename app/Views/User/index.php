@@ -25,6 +25,7 @@
                             <tr>
                                 <th>#</th>
                                 <th><?= lang('Auth.full_name') ?></th>
+                                <th><?= lang('boilerplate.user.fields.group_name') ?></th>
                                 <th><?= lang('Auth.username') ?></th>
                                 <th><?= lang('Auth.email') ?></th>
                                 <th><?= lang('boilerplate.user.fields.active') ?></th>
@@ -59,13 +60,16 @@
         },
         columnDefs: [{
             orderable: false,
-            targets: [0, 3, 5]
+            targets: [0, 5, 7]
         }],
         columns: [{
                 'data': null
             },
             {
                 'data': 'full_name'
+            },
+            {
+                'data': 'group_name'
             },
             {
                 'data': 'username'

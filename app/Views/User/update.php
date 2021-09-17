@@ -110,32 +110,11 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="inputSkills" class="col-sm-2 col-form-label"><?= lang('boilerplate.permission.title') ?></label>
-                        <div class="col-sm-8">
-                            <select class="form-control select" name="permission[]" multiple="multiple" data-placeholder="<?= lang('boilerplate.permission.fields.plc_name') ?>" style="width: 100%;">
-                                <?php foreach ($permissions as $value) { ?>
-                                    <?php if (array_key_exists($value['id'], $permission)) { ?>
-                                        <option value="<?= $value['id'] ?>" selected><?= $value['name'] ?></option>
-                                    <?php } else { ?>
-                                        <option value="<?= $value['id'] ?>"><?= $value['name'] ?></option>
-                                    <?php } ?>
-                                <?php } ?>
-                            </select>
-                            <?php if (session('error.permission')) { ?>
-                                <h6 class="text-danger"><?= session('error.permission') ?></h6>
-                            <?php } ?>
-                        </div>
-                    </div>
-                    <div class="form-group row">
                         <label for="inputSkills" class="col-sm-2 col-form-label"><?= lang('boilerplate.role.title') ?></label>
                         <div class="col-sm-8">
-                            <select class="form-control select" name="role[]" multiple="multiple" data-placeholder="<?= lang('boilerplate.role.fields.plc_name') ?>" style="width: 100%;">
+                            <select class="form-control select" name="role" data-placeholder="<?= lang('boilerplate.role.fields.plc_name') ?>" style="width: 100%;">
                                 <?php foreach ($roles as $value) { ?>
-                                    <?php if (array_key_exists($value->id, $role)) { ?>
-                                        <option value="<?= $value->id ?>" selected><?= $value->name ?></option>
-                                    <?php } else { ?>
-                                        <option value="<?= $value->id ?>"><?= $value->name ?></option>
-                                    <?php } ?>
+                                    <option value="<?= $value->id ?>" <?= $user['group_id'] == $value->id ? 'selected' : '' ?>><?= $value->name ?></option>
                                 <?php } ?>
                             </select>
                             <?php if (session('error.role')) { ?>
