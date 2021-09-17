@@ -76,6 +76,7 @@ class UserController extends BaseController
             $validationRules = [
                 'email'        => "required|valid_email|is_unique[users.email,id,$id]",
                 'username'     => "required|alpha_numeric_space|min_length[3]|is_unique[users.username,id,$id]",
+                'full_name'    => "required|min_length[3]",
                 'password'     => 'if_exist',
                 'pass_confirm' => 'matches[password]',
             ];
@@ -92,6 +93,7 @@ class UserController extends BaseController
 
             $user->email = $this->request->getPost('email');
             $user->username = $this->request->getPost('username');
+            $user->full_name = $this->request->getPost('full_name');
 
             if ($this->users->skipValidation(true)->update(user()->id, $user)) {
                 return redirect()->back()->with('sweet-success', lang('boilerplate.user.msg.msg_update'));
@@ -142,6 +144,7 @@ class UserController extends BaseController
             'active'       => 'required',
             'username'     => 'required|alpha_numeric_space|min_length[3]|is_unique[users.username]',
             'email'        => 'required|valid_email|is_unique[users.email]',
+            'full_name'    => "required|min_length[3]",
             'password'     => 'required',
             'pass_confirm' => 'required|matches[password]',
             'permission'   => 'required',
@@ -162,6 +165,7 @@ class UserController extends BaseController
                 'active'   => $this->request->getPost('active'),
                 'email'    => $this->request->getPost('email'),
                 'username' => $this->request->getPost('username'),
+                'full_name' => $this->request->getPost('full_name'),
                 'password' => $this->request->getPost('password'),
             ]));
 
@@ -218,6 +222,7 @@ class UserController extends BaseController
         $validationRules = [
             'active'       => 'required',
             'username'     => "required|alpha_numeric_space|min_length[3]|is_unique[users.username,id,$id]",
+            'full_name'    => "required|min_length[3]",
             'email'        => "required|valid_email|is_unique[users.email,id,$id]",
             'password'     => 'if_exist',
             'pass_confirm' => 'matches[password]',
@@ -241,6 +246,7 @@ class UserController extends BaseController
             $user->active = $this->request->getPost('active');
             $user->email = $this->request->getPost('email');
             $user->username = $this->request->getPost('username');
+            $user->full_name = $this->request->getPost('full_name');
 
             $this->users->skipValidation(true)->update($id, $user);
 

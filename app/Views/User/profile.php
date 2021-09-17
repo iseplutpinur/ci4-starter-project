@@ -9,9 +9,10 @@
         <div class="card card-primary card-outline">
             <div class="card-body box-profile">
                 <div class="text-center">
-                    <img class="profile-user-img img-fluid img-circle" src="https://cdn.jsdelivr.net/npm/admin-lte@3.0.2/dist/img/avatar.png" alt="User profile picture">
+                    <img class="profile-user-img img-fluid img-circle" src="<?= base_url('/assets/template/dist/img/avatar.png') ?>" alt="User profile picture">
                 </div>
-                <h3 class="profile-username text-center"><?= user()->username ?></h3>
+                <h3 class="profile-username text-center"><?= user()->full_name ?></h3>
+                <p class="text-muted text-center"><i class="far fa-fw fa-user"></i><?= user()->username ?></p>
                 <p class="text-muted text-center"><i class="far fa-fw fa-envelope"></i><?= user()->email ?></p>
                 <ul class="list-group list-group-unbordered mb-3">
                     <li class="list-group-item">
@@ -41,7 +42,7 @@
                         <form action="<?= route_to('user-profile') ?>" method="post" class="form-horizontal">
                             <?= csrf_field() ?>
                             <div class="form-group row">
-                                <label for="inputName" class="col-sm-3 col-form-label"><?= lang('Auth.email') ?></label>
+                                <label for="email" class="col-sm-3 col-form-label"><?= lang('Auth.email') ?></label>
                                 <div class="col-sm-7">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
@@ -57,7 +58,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="inputName" class="col-sm-3 col-form-label"><?= lang('Auth.username') ?></label>
+                                <label for="username" class="col-sm-3 col-form-label"><?= lang('Auth.username') ?></label>
                                 <div class="col-sm-7">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
@@ -73,7 +74,23 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="inputName2" class="col-sm-3 col-form-label"><?= lang('Auth.password') ?></label>
+                                <label for="full_name" class="col-sm-3 col-form-label"><?= lang('Auth.full_name') ?></label>
+                                <div class="col-sm-7">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                        </div>
+                                        <input type="text" name="full_name" class="form-control <?= session('error.full_name') ? 'is-invalid' : '' ?>" value="<?= user()->full_name ?>" placeholder="<?= lang('Auth.full_name') ?>" autocomplete="off">
+                                        <?php if (session('error.full_name')) { ?>
+                                            <div class="invalid-feedback">
+                                                <h6><?= session('error.full_name') ?></h6>
+                                            </div>
+                                        <?php } ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="password" class="col-sm-3 col-form-label"><?= lang('Auth.password') ?></label>
                                 <div class="col-sm-7">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
@@ -89,7 +106,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="inputName2" class="col-sm-3 col-form-label"><?= lang('Auth.repeatPassword') ?></label>
+                                <label for="pass_confirm" class="col-sm-3 col-form-label"><?= lang('Auth.repeatPassword') ?></label>
                                 <div class="col-sm-7">
                                     <div class="input-group">
                                         <div class="input-group-prepend">

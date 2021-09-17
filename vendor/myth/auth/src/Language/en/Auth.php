@@ -96,4 +96,5 @@ return [
     'newPassword'               => 'New Password',
     'newPasswordRepeat'         => 'Repeat New Password',
     'resetPassword'             => 'Reset Password',
+    'full_name'                 => 'Full Name'
 ];

@@ -52,9 +52,10 @@ class PermissionFilter implements FilterInterface
 
         // Check each requested permission
         foreach ($params as $permission) {
-            $result = $result && $authorize->hasPermission($permission, $authenticate->id());
+            $result = $result && $authorize->hasPermissionMod($permission, $authenticate->id());
         }
-
+        // var_dump($result);
+        // die;
         if (!$result) {
             if ($authenticate->silent()) {
                 $redirectURL = session('redirect_url') ?? '/';
