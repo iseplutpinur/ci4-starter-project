@@ -1,3 +1,5 @@
+// "myth/auth": "1.0.*"
+
 1. Buat filed user_group di table user
 2. tambah input pada create dan update user
 3. Ubah Level di tampilan user_string_role
