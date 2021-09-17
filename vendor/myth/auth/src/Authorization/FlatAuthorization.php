@@ -167,6 +167,33 @@ class FlatAuthorization implements AuthorizeInterface
 		return $this->doesUserHavePermission($userId, (int)$permissionId);
 	}
 
+	public function hasPermissionMod($permission, int $userId)
+	{
+		// @phpstan-ignore-next-line
+		if (empty($permission) || (!is_string($permission) && !is_numeric($permission))) {
+			return null;
+		}
+
+		if (empty($userId) || !is_numeric($userId)) {
+			return null;
+		}
+
+		// Get the Permission ID
+		$permissionId = $this->getPermissionID($permission);
+
+		if (!is_numeric($permissionId)) {
+			return false;
+		}
+
+		// First check the permission model. If that exists, then we're golden.
+		if ($this->permissionModel->doesUserHavePermission($userId, (int)$permissionId)) {
+			return true;
+		}
+
+		// Still here? Then we have one last check to make - any user private permissions.
+		return $this->doesUserHavePermission($userId, (int)$permissionId);
+	}
+
 	/**
 	 * Makes a member a part of a group.
 	 *
