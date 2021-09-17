@@ -34,13 +34,14 @@ if (!function_exists('menu')) {
         }
 
         // TODO: cache the result
-        if (!$found = cache('menu')) {
-            $found = parse((new MenuModel())->where('active', 1)->orderBy('sequence', 'asc')->get()->getResultObject(), 0);
-            // $found = parse((new GroupMenuModel())->menuHasRole(), 0);
-            cache()->save('menu', $found, 300);
-        }
-        return $found;
-        // return parse((new GroupMenuModel())->menuHasRole(), 0);
+        // if (!$found = cache('menu')) {
+        //     $found = parse((new MenuModel())->where('active', 1)->orderBy('sequence', 'asc')->get()->getResultObject(), 0);
+        //     $found = parse((new GroupMenuModel())->menuHasRole(), 0);
+        //     cache()->save('menu', $found, 300);
+        // }
+        // return $found;
+
+        return parse((new GroupMenuModel())->menuHasRole(), 0);
     }
 }
 

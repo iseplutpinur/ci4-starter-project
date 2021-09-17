@@ -1,7 +1,7 @@
 // "myth/auth": "1.0.*"
 
-1. Buat filed user_group di table user ['sudah]
-2. tambah input pada create dan update user
+1. Buat filed user_group di table user [clear]
+2. tambah input pada create dan update user [clear]
 3. Ubah Level di tampilan user_string_role
 
 
@@ -17,3 +17,4 @@ ubah user user role one [clear]
 delete cache ketika user group diganti
 delete cache ketika group role diupdate
 delete cache ketika menu direfresh
+delete cache ketika menu disimpan all user

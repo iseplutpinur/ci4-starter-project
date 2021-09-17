@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 17, 2021 at 08:34 AM
+-- Generation Time: Sep 17, 2021 at 12:12 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 7.4.21
 
@@ -69,29 +69,8 @@ INSERT INTO `auth_groups_permissions` (`group_id`, `permission_id`) VALUES
 (1, 2),
 (1, 3),
 (1, 4),
-(3, 1),
-(3, 2);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `auth_groups_users`
---
-
-CREATE TABLE `auth_groups_users` (
-  `group_id` int(11) UNSIGNED NOT NULL DEFAULT 0,
-  `user_id` int(11) UNSIGNED NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `auth_groups_users`
---
-
-INSERT INTO `auth_groups_users` (`group_id`, `user_id`) VALUES
-(1, 1),
-(1, 3),
-(3, 4),
-(3, 5);
+(1, 5),
+(3, 1);
 
 -- --------------------------------------------------------
 
@@ -187,7 +166,12 @@ INSERT INTO `auth_logins` (`id`, `ip_address`, `email`, `user_id`, `date`, `succ
 (72, '::1', 'kepegawaian', NULL, '2021-09-16 12:40:57', 0),
 (73, '::1', 'kepegawaian@gmail.com', 5, '2021-09-16 12:41:11', 1),
 (74, '::1', 'iseplutpinur7@gmail.com', 1, '2021-09-16 22:28:52', 1),
-(75, '::1', 'iseplutpinur7@gmail.com', 1, '2021-09-17 01:25:10', 1);
+(75, '::1', 'iseplutpinur7@gmail.com', 1, '2021-09-17 01:25:10', 1),
+(76, '::1', 'kepegawaian@gmail.com', 5, '2021-09-17 01:51:55', 1),
+(77, '::1', 'administrator@gmail.com', 3, '2021-09-17 02:22:27', 1),
+(78, '::1', 'iseplutpinur7@gmail.com', 1, '2021-09-17 02:35:23', 1),
+(79, '::1', 'iseplutpinur7@gmail.com', 1, '2021-09-17 03:53:33', 1),
+(80, '::1', 'administrator@gmail.com', 3, '2021-09-17 04:53:55', 1);
 
 -- --------------------------------------------------------
 
@@ -258,17 +242,17 @@ CREATE TABLE `auth_users_permissions` (
 
 INSERT INTO `auth_users_permissions` (`user_id`, `permission_id`) VALUES
 (1, 1),
+(1, 2),
+(1, 3),
+(1, 4),
 (2, 1),
 (3, 1),
 (3, 2),
 (3, 3),
 (3, 4),
+(3, 5),
 (4, 2),
-(5, 1),
-(5, 2),
-(5, 3),
-(5, 4),
-(5, 5);
+(5, 1);
 
 -- --------------------------------------------------------
 
@@ -288,16 +272,15 @@ CREATE TABLE `groups_menu` (
 
 INSERT INTO `groups_menu` (`id`, `group_id`, `menu_id`) VALUES
 (22, 1, 6),
-(35, 1, 5),
 (36, 1, 1),
 (37, 3, 1),
 (42, 1, 2),
 (43, 3, 2),
 (44, 1, 3),
 (45, 3, 3),
-(46, 1, 4),
-(47, 3, 4),
-(49, 1, 7);
+(49, 1, 7),
+(52, 1, 4),
+(53, 1, 5);
 
 -- --------------------------------------------------------
 
@@ -322,13 +305,13 @@ CREATE TABLE `menu` (
 --
 
 INSERT INTO `menu` (`id`, `parent_id`, `active`, `title`, `icon`, `route`, `sequence`, `created_at`, `updated_at`) VALUES
-(1, 0, 1, 'Dashboard', 'fas fa-tachometer-alt', '/', 1, '2021-08-26 07:52:10', '2021-09-16 01:54:30'),
-(2, 0, 1, 'User Management', 'fas fa-user', '#', 2, '2021-08-26 07:52:10', '2021-09-16 01:54:30'),
-(3, 2, 1, 'User Profile', 'fas fa-user-edit', 'user/profile', 3, '2021-08-26 07:52:10', '2021-09-16 01:54:30'),
-(4, 2, 1, 'Users', 'fas fa-users', 'user/manage', 6, '2021-08-26 07:52:10', '2021-09-16 01:54:30'),
-(5, 2, 1, 'Permissions', 'fas fa-user-lock', 'permission', 4, '2021-08-26 07:52:10', '2021-09-16 01:54:30'),
-(6, 2, 1, 'Roles', 'fas fa-users-cog', 'role', 5, '2021-08-26 07:52:10', '2021-09-16 01:54:30'),
-(7, 2, 1, 'Menu', 'fas fa-stream', 'menu', 7, '2021-08-26 07:52:10', '2021-09-16 07:43:15');
+(1, 0, 1, 'Dashboard', 'fas fa-tachometer-alt', '/', 1, '2021-08-26 07:52:10', '2021-09-17 05:10:38'),
+(2, 0, 1, 'User Management', 'fas fa-user', '#', 2, '2021-08-26 07:52:10', '2021-09-17 05:10:38'),
+(3, 2, 1, 'User Profile', 'fas fa-user-edit', 'user/profile', 3, '2021-08-26 07:52:10', '2021-09-17 05:10:38'),
+(4, 2, 1, 'Users', 'fas fa-users', 'user/manage', 6, '2021-08-26 07:52:10', '2021-09-17 05:10:38'),
+(5, 2, 1, 'Permissions', 'fas fa-user-lock', 'permission', 4, '2021-08-26 07:52:10', '2021-09-17 05:10:38'),
+(6, 2, 1, 'Roles', 'fas fa-users-cog', 'role', 5, '2021-08-26 07:52:10', '2021-09-17 05:10:38'),
+(7, 2, 1, 'Menu', 'fas fa-stream', 'menu', 7, '2021-08-26 07:52:10', '2021-09-17 05:10:38');
 
 -- --------------------------------------------------------
 
@@ -363,7 +346,7 @@ INSERT INTO `migrations` (`id`, `version`, `class`, `group`, `namespace`, `time`
 
 CREATE TABLE `users` (
   `id` int(11) UNSIGNED NOT NULL,
-  `id_groups` int(11) UNSIGNED DEFAULT NULL,
+  `group_id` int(11) UNSIGNED DEFAULT NULL,
   `email` varchar(255) NOT NULL,
   `username` varchar(30) DEFAULT NULL,
   `full_name` varchar(50) DEFAULT NULL,
@@ -385,10 +368,10 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `id_groups`, `email`, `username`, `full_name`, `password_hash`, `reset_hash`, `reset_at`, `reset_expires`, `activate_hash`, `status`, `status_message`, `active`, `force_pass_reset`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, 'iseplutpinur7@gmail.com', 'iseplutpinur', 'Isep Lutpi Nur', '$2y$10$7/TSmqe7.UkrBlcLkjpRoeeBT2inW4q/nMvUvBB/MXUa09gUvghg6', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2021-08-26 07:52:10', '2021-09-16 12:16:22', NULL),
-(3, 3, 'administrator@gmail.com', 'administrator', 'Isep Lutpi Nur', '$2y$10$4KnIycPrdqYgivXqq4ycVOvV9ythlwhR7Wt4BnnjILmw0iqf2tmR6', 'b11b5612a416b7221b52757f25bcdb84', NULL, '2021-09-15 07:14:54', NULL, NULL, NULL, 1, 0, '2021-08-26 22:23:48', '2021-09-16 12:25:09', NULL),
-(5, 3, 'kepegawaian@gmail.com', 'kepegawaian', 'Isep Lutpi Nur', '$2y$10$7vEKPDGGF.7s.Udmv9FLC.OVDVe4FuyuUMCw/1ZX3wpV5BTYsgtyq', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2021-09-16 08:11:04', '2021-09-16 12:46:50', NULL);
+INSERT INTO `users` (`id`, `group_id`, `email`, `username`, `full_name`, `password_hash`, `reset_hash`, `reset_at`, `reset_expires`, `activate_hash`, `status`, `status_message`, `active`, `force_pass_reset`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 1, 'iseplutpinur7@gmail.com', 'iseplutpinur', 'Isep Lutpi Nur', '$2y$10$7/TSmqe7.UkrBlcLkjpRoeeBT2inW4q/nMvUvBB/MXUa09gUvghg6', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2021-08-26 07:52:10', '2021-09-17 02:46:31', NULL),
+(3, 3, 'administrator@gmail.com', 'administrator', 'Administrator', '$2y$10$4KnIycPrdqYgivXqq4ycVOvV9ythlwhR7Wt4BnnjILmw0iqf2tmR6', 'b11b5612a416b7221b52757f25bcdb84', NULL, '2021-09-15 07:14:54', NULL, NULL, NULL, 1, 0, '2021-08-26 22:23:48', '2021-09-17 04:49:07', NULL),
+(5, 3, 'kepegawaian@gmail.com', 'kepegawaian', 'Kepegawaian Nama', '$2y$10$4INuGR5s/kMLO3g65jxXceo4ao8kmOX2gd59CnPvJ3Xyb/uOibmrG', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2021-09-16 08:11:04', '2021-09-17 04:51:54', NULL);
 
 --
 -- Indexes for dumped tables
@@ -412,13 +395,6 @@ ALTER TABLE `auth_groups`
 ALTER TABLE `auth_groups_permissions`
   ADD KEY `auth_groups_permissions_permission_id_foreign` (`permission_id`),
   ADD KEY `group_id_permission_id` (`group_id`,`permission_id`);
-
---
--- Indexes for table `auth_groups_users`
---
-ALTER TABLE `auth_groups_users`
-  ADD KEY `auth_groups_users_user_id_foreign` (`user_id`),
-  ADD KEY `group_id_user_id` (`group_id`,`user_id`);
 
 --
 -- Indexes for table `auth_logins`
@@ -482,7 +458,7 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `email` (`email`),
   ADD UNIQUE KEY `username` (`username`),
-  ADD KEY `id_groups` (`id_groups`);
+  ADD KEY `id_groups` (`group_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -504,7 +480,7 @@ ALTER TABLE `auth_groups`
 -- AUTO_INCREMENT for table `auth_logins`
 --
 ALTER TABLE `auth_logins`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
 
 --
 -- AUTO_INCREMENT for table `auth_permissions`
@@ -528,7 +504,7 @@ ALTER TABLE `auth_tokens`
 -- AUTO_INCREMENT for table `groups_menu`
 --
 ALTER TABLE `groups_menu`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `menu`
@@ -546,7 +522,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Constraints for dumped tables
@@ -558,13 +534,6 @@ ALTER TABLE `users`
 ALTER TABLE `auth_groups_permissions`
   ADD CONSTRAINT `auth_groups_permissions_group_id_foreign` FOREIGN KEY (`group_id`) REFERENCES `auth_groups` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `auth_groups_permissions_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `auth_permissions` (`id`) ON DELETE CASCADE;
-
---
--- Constraints for table `auth_groups_users`
---
-ALTER TABLE `auth_groups_users`
-  ADD CONSTRAINT `auth_groups_users_group_id_foreign` FOREIGN KEY (`group_id`) REFERENCES `auth_groups` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `auth_groups_users_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `auth_tokens`
@@ -590,5 +559,5 @@ ALTER TABLE `groups_menu`
 -- Constraints for table `users`
 --
 ALTER TABLE `users`
-  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`id_groups`) REFERENCES `auth_groups` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`group_id`) REFERENCES `auth_groups` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 COMMIT;
