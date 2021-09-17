@@ -99,6 +99,6 @@ if (!function_exists('user_string_role')) {
 	 */
 	function user_string_role(): string
 	{
-		return model(GroupModel::class)->getGroupsForUserStringOne(user_id());
+		return model(UserModel::class)->getStringGroups(user_id());
 	}
 }

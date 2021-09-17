@@ -30,4 +30,25 @@ class UserModel extends BaseModel
 
         return $condition->where('deleted_at', null);
     }
+
+    public function getStringGroups(int $userId)
+    {
+        $cache_name = user()->id . '_group_user_name';
+        if (!$found = cache($cache_name)) {
+            $found = $this->builder()
+                ->select('name')
+                ->join('auth_groups', 'users.group_id = auth_groups.id', 'left')
+                ->where('users.id', $userId)
+                ->get()
+                ->getRowObject();
+            if ($found != null) {
+                $found = $found->name;
+                cache()->save($cache_name, $found, 300);
+            } else {
+                cache()->delete($cache_name);
+                $found = '';
+            }
+        }
+        return $found;
+    }
 }
